@@ -7,15 +7,15 @@ class Image(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     locationId = db.Column(db.Integer, db.ForeignKey('locations.id'), nullable=False)
     reviewId = db.Column(db.Integer, db.ForeignKey('reviews.id'))
-    createdAt = db.Column(db.DateTime(timezone=True)
-    updatedAt = db.Column(db.DateTime(timezone=True)
+    createdAt = db.Column(db.DateTime(timezone=True))
+    updatedAt = db.Column(db.DateTime(timezone=True))
     
     #relationships
     
-    reviews = db.relationships('Review', back_populates='images')
-    location =db.relationships('Location',back_populates='images')
+    reviews = db.relationship('Review', back_populates='images')
+    location =db.relationship('Location',back_populates='images')
     
-     def to_dict(self):
+    def to_dict(self):
         return {
             'id': self.id,
             'locationId': self.locationId,

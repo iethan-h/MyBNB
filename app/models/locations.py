@@ -11,21 +11,22 @@ class Location(db.Model):
     city = db.Column(db.String(250), nullable=False)
     state = db.Column(db.String(250), nullable=False)
     country = db.Column(db.String(250), nullable=False)
-    price = db.column(db.Float, nullable=False)
+    price = db.Column(db.Float, nullable=False)
     startDate = db.Column(db.DateTime(timezone=True))
     endDate = db.Column(db.DateTime(timezone=True))
-    createdAt = db.Column(db.DateTime(timezone=True)
-    updatedAt = db.Column(db.DateTime(timezone=True)
+    createdAt = db.Column(db.DateTime(timezone=True))
+    updatedAt = db.Column(db.DateTime(timezone=True))
     
     
     #relationships
-    user = db.relationships('User', back_populates='locations')
-    reviews = db.relationships('Review', back_populates='locations')
-    bookings = db.relationships('Booking', back_populates='locations')
-    images = db.relationships('Image'),back_populates='images')
+    user = db.relationship('User', back_populates='locations')
+    reviews = db.relationship('Review', back_populates='locations')
+    bookings = db.relationship('Booking', back_populates='locations')
+    images = db.relationship('Image', back_populates='images')
     
     def to_dict(self):
-        return{
+        return
+        {
              'id': self.id,
              'address': self.address,
              'city': self.city,
@@ -37,4 +38,4 @@ class Location(db.Model):
              'userId': self.userId,
              'createdAt': self.createdAt.strftime("%Y/%m/%d %H:%M:%S"),
              'updatedAt': self.updatedAt.strftime("%Y/%m/%d %H:%M:%S")
-        
+        }

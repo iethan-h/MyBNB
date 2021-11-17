@@ -9,13 +9,13 @@ class Booking(db.Model):
     locationId = db.Column(db.Integer, db.ForeignKey('locations.id'), nullable=False)
     startDate = db.Column(db.DateTime,nullable=False)
     endDate = db.Column(db.DateTime,nullable=False)
-    createdAt = db.Column(db.DateTime(timezone=True)
-    updatedAt = db.Column(db.DateTime(timezone=True)
+    createdAt = db.Column(db.DateTime(timezone=True))
+    updatedAt = db.Column(db.DateTime(timezone=True))
     
     #relationships
     
-    user = db.relationships('User', back_populates='booking')
-    locations = db.relationships('Location', back_populates='booking')
+    user = db.relationship('User', back_populates='booking')
+    locations = db.relationship('Location', back_populates='booking')
     
     def to_dict(self):
         return {

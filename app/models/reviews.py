@@ -5,16 +5,16 @@ class Review(db.Model):
     __tablename__ = 'reviews'
     
     id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.Integer, db.ForeignKey('users.id', onDelete='CASCADE'), nullable=False)
-    locationId = db.Column(db.Integer, db.ForeignKey('locations.id', onDelete='CASCADE'), nullable=False)
-    review = db.Column(db.varchar(500), nullable=False)
-    createdAt = db.Column(db.DateTime(timezone=True)
-    updatedAt = db.Column(db.DateTime(timezone=True)
+    userId = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
+    locationId = db.Column(db.Integer, db.ForeignKey('locations.id', ondelete='CASCADE'), nullable=False)
+    review = db.Column(db.String(500), nullable=False)
+    createdAt = db.Column(db.DateTime(timezone=True))
+    updatedAt = db.Column(db.DateTime(timezone=True))
     
     #relationships
     
-    users = db.relationships('User', back_populates='reviews')
-    locations = db.relationships('Location', back_populates='reviews')
+    users = db.relationship('User', back_populates='reviews')
+    locations = db.relationship('Location', back_populates='reviews')
     
     def to_dict(self):
         return {
