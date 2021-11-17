@@ -13,7 +13,7 @@ class Image(db.Model):
     #relationships
     
     reviews = db.relationship('Review', back_populates='images')
-    location =db.relationship('Location',back_populates='images')
+    locations =db.relationship('Location',back_populates='images')
     
     def to_dict(self):
         return {

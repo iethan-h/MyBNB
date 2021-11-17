@@ -21,8 +21,8 @@ class Location(db.Model):
     #relationships
     user = db.relationship('User', back_populates='locations')
     reviews = db.relationship('Review', back_populates='locations')
-    bookings = db.relationship('Booking', back_populates='locations')
-    images = db.relationship('Image', back_populates='images')
+    booking = db.relationship('Booking', back_populates='locations')
+    images = db.relationship('Image', back_populates='locations')
     
     def to_dict(self):
         return
