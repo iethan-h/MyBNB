@@ -19,7 +19,10 @@ class Location(db.Model):
     
     
     #relationships
-    
+    user = db.relationships('User', back_populates='locations')
+    reviews = db.relationships('Review', back_populates='locations')
+    bookings = db.relationships('Booking', back_populates='locations')
+    images = db.relationships('Image'),back_populates='images')
     
     def to_dict(self):
         return{
@@ -34,4 +37,4 @@ class Location(db.Model):
              'userId': self.userId,
              'createdAt': self.createdAt.strftime("%Y/%m/%d %H:%M:%S"),
              'updatedAt': self.updatedAt.strftime("%Y/%m/%d %H:%M:%S")
-        }
+        

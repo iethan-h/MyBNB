@@ -14,6 +14,9 @@ class Booking(db.Model):
     
     #relationships
     
+    user = db.relationships('User', back_populates='booking')
+    locations = db.relationships('Location', back_populates='booking')
+    
     def to_dict(self):
         return {
             'id': self.id,

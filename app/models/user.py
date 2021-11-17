@@ -14,7 +14,9 @@ class User(db.Model, UserMixin):
     
     #relationships
     
-    
+    locations = db.relationships('Location', back_populates='user', cascade='all, delete')
+    reviews = db.relationships('Review', back_populates='user', cascade='all, delete')
+    booking = db.relationships('Booking', back_populates='user', cascade='all, delete')
 
     @property
     def password(self):

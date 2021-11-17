@@ -1,6 +1,6 @@
 from .db import db
 
-class Images(db.Model):
+class Image(db.Model):
     
     __tablename__ = 'images'
     
@@ -11,6 +11,9 @@ class Images(db.Model):
     updatedAt = db.Column(db.DateTime(timezone=True)
     
     #relationships
+    
+    reviews = db.relationships('Review', back_populates='images')
+    location =db.relationships('Location',back_populates='images')
     
      def to_dict(self):
         return {
