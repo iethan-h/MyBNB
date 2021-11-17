@@ -13,6 +13,9 @@ class Review(db.Model):
     
     #relationships
     
+    users = db.relationships('User', back_populates='reviews')
+    location = db.relationships('Location', back_populates='reviews')
+    
     def to_dict(self):
         return {
             'id': self.id,
