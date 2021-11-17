@@ -12,7 +12,8 @@ class Image(db.Model):
     
     #relationships
     
-    review = db.relationships('Review', back_populates='reviews')
+    reviews = db.relationships('Review', back_populates='images')
+    location =db.relationships('Location',back_populates='images')
     
      def to_dict(self):
         return {

@@ -19,9 +19,10 @@ class Location(db.Model):
     
     
     #relationships
-    users = db.relationships('User', back_populates='locations')
+    user = db.relationships('User', back_populates='locations')
     reviews = db.relationships('Review', back_populates='locations')
-    bookings = db.relationships('Booking', back_populates='location)
+    bookings = db.relationships('Booking', back_populates='locations')
+    images = db.relationships('Image'),back_populates='images')
     
     def to_dict(self):
         return{
