@@ -3,16 +3,25 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import LogoutButton from '../auth/LogoutButton'
 import Search from '../search/searchForm'
+import NewHostForm from '../newHost/newHostForm'
+import { Modal } from '../../context/Modal';
 
 const Home = () =>{
-    
+    const [showModal, setShowModal] = useState(false);
     return(
         <> 
         <div> 
             <LogoutButton />
         </div>
         <div>
-            <a href=' '>Host a location</a>
+            <button onClick={() => setShowModal(true)}>
+            Host a location
+            </button>
+            {showModal && (
+            <Modal onClose={() => setShowModal(false)}>
+              <NewHostForm />
+            </Modal>
+          )}
         </div>
         <div>
             <a href=' '>Browse</a>

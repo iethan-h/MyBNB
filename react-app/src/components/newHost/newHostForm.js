@@ -1,8 +1,13 @@
-const NewHost = () => {
+import React, { useState} from "react";
+import { useDispatch,useSelector} from "react-redux";
+
+
+
+const NewHostForm = () => {
     return (
         <div>
-            <fieldset>
-                <form>
+            <form>
+                <fieldset>
                     <legend>Host a location</legend>
                         <div>
                             <input type="text" placeholder="Address"></input>
@@ -22,9 +27,9 @@ const NewHost = () => {
                         <div>
                             <button type="submit">Submit</button>
                         </div>
-                </form>
-            </fieldset>   
+                </fieldset>
+            </form>   
         </div>
     )
 }
-export default NewHost
+export default NewHostForm
