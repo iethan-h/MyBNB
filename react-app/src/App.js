@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import { authenticate } from './store/session';
 import Home from './components/homePage'
+import Splash from './components/splashPage'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -27,8 +28,11 @@ function App() {
 
   return (
     <BrowserRouter>
-    <NavBar />
       <Switch>
+        <Route path='/' exact={true}>
+          <NavBar />
+          <Splash />          
+        </Route>
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
