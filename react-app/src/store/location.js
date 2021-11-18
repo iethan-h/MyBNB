@@ -66,8 +66,8 @@ export const getSingleLocation = (location) => async (dispatch) => {
     dispatch(getALocation(oneLocation))
 }
 
-export const editLocation = (location) => async (dispatch) => {
-    const response = await fetch(`/api/locations/${location}`, {
+export const editLocation = (location, locationId) => async (dispatch) => {
+    const response = await fetch(`/api/locations/${locationId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -107,7 +107,6 @@ const LocationReducer = (state = {}, action) =>{
             
             
         case ADD_LOCATION:
-            console.log('action clg', action.location);
             return {
                 ...state,
                 [action.location?.id]: action.location
