@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
@@ -8,19 +9,26 @@ import { Modal } from '../../context/Modal';
 
 const Home = () =>{
     const [showModal, setShowModal] = useState(false);
+    
+    const [showMenu, setShowMenu] = useState(false);
+    
+    const closeMenu = () => {
+        setShowMenu(false);
+      };
+      
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
     return(
         <> 
         <div> 
             <LogoutButton />
         </div>
         <div>
-            <button onClick={() => setShowModal(true)}>
-            Host a location
-            </button>
-            {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
-              <NewHostForm />
-            </Modal>
+        <button onClick={showMenu === false ? openMenu : closeMenu}>Be a Host</button>
+        {showMenu && (    
+            <NewHostForm/>         
           )}
         </div>
         <div>
