@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-const ADD_LOCATION = '/locations/ADD_LOCATION'
-const GET_ONE_LOCATION = '/locations/GET_ONE_LOCATION'
-const GET_ALL_LOCATIONS = '/locations/GET_ALL_LOCATIONS'
-const REMOVE_LOCATION = '/locations/REMOVE_LOCATION'
-const EDIT_LOCATION = '/locations/EDIT_LOCATION'
+const ADD_LOCATION = 'locations/ADD_LOCATION'
+const GET_ONE_LOCATION = 'locations/GET_ONE_LOCATION'
+const GET_ALL_LOCATIONS = 'locations/GET_ALL_LOCATIONS'
+const REMOVE_LOCATION = 'locations/REMOVE_LOCATION'
+const EDIT_LOCATION = 'locations/EDIT_LOCATION'
 
 
 /*-------------ACTIONS-------------*/
@@ -40,18 +40,20 @@ const editALocation = location =>({
 
 /*-------------THUNKS-------------*/
 
-export const newLocation = (payload, userId, imageUrl) => async (dispatch) => {
+export const newLocation = (payload) => async (dispatch) => {
     const response = await fetch(`/api/locations`, {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json',
           },
-        body: JSON.stringify({...payload, userId, imageUrl})
+        body: JSON.stringify(payload)
     })
-    if (response.ok) {
-        const location = await response.json()
-        dispatch(addOneLocation(location))
-    }
+    // let result = await response.json()
+    // console.log("*****",result)
+    // if (response.ok) {
+    //     const location = await response.json()
+    //     dispatch(addOneLocation(location))
+    // }
 }
 
 export const AllLocations = (locations) => async(dispatch)=> {
@@ -92,25 +94,26 @@ export const deleteLocation = (locationId) => async (dispatch) =>{
 }
 
 /*-------------REDUCER-------------*/
-
-const LocationReducer = (state = {}, action) =>{
-    let newState;
+const initialState = {}
+const LocationReducer = (state = initialState, action) =>{
+    console.log("%%%%%", action)
     switch(action.type) {
         
-        
         case GET_ALL_LOCATIONS:
-            newState = {...state}
+            const newState = {...state}
             action.locations.forEach(location => {
-                newState[location?.id] = location
+                newState[location] = location
             });
             return newState;
             
             
         case ADD_LOCATION:
-            return {
-                ...state,
-                [action.location?.id]: action.location
-            }
+            console.log("######",action)
+            // return {
+            //     ...state,
+            //     [action.location?.id]: action.location
+            // }
+            return{ state }
             
             
         case REMOVE_LOCATION: {
@@ -138,3 +141,4 @@ const LocationReducer = (state = {}, action) =>{
             return state;
     }
 }
+export default LocationReducer

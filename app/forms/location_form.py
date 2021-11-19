@@ -8,3 +8,10 @@ def location_exists(form, field):
     user = Location.query.filter(Location.address == address).first()
     if user:
         raise ValidationError('Location is already being hosted.')
+
+class LocationForm(FlaskForm):
+    address = StringField('address', validators=[DataRequired()],location_exists)
+    city = StringField('city', validators=[DataRequired()],location_exists)
+    state = StringField('state', validators=[DataRequired()],location_exists)
+    image = StringField('image', validators=[DataRequired()])
+    price = StringField('price', validators=[DataRequired()])
