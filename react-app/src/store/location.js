@@ -60,8 +60,8 @@ export const AllLocations = (locations) => async(dispatch)=> {
 	dispatch(getAllLocations(data));
 }
 
-export const getSingleLocation = (location) => async (dispatch) => {
-    const res = await fetch(`/api/locations/${location}`)
+export const getSingleLocation = (locationId) => async (dispatch) => {
+    const res = await fetch(`/api/locations/${locationId}`)
     const oneLocation= await res.json();
     dispatch(getALocation(oneLocation))
 }
@@ -130,7 +130,7 @@ const LocationReducer = (state = {}, action) =>{
         case GET_ONE_LOCATION:
             return {
                 ...state,
-             [action.spot.id]: action.spot
+             [action.location.id]: action.location
          }
          
          
