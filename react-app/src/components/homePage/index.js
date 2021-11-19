@@ -6,6 +6,7 @@ import LogoutButton from '../auth/LogoutButton'
 import Search from '../search/searchForm'
 import NewHostForm from '../newHost/newHostForm'
 import { Modal } from '../../context/Modal';
+import {NavLink} from 'react-router-dom'
 
 const Home = () =>{
     const [showModal, setShowModal] = useState(false);
@@ -32,7 +33,7 @@ const Home = () =>{
           )}
         </div>
         <div>
-            <a href=' '>Browse</a>
+            <NavLink to='/locations'>Browse</NavLink>
         </div>
         <div>
             <Search/>

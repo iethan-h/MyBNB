@@ -10,6 +10,7 @@ import User from './components/User';
 import { authenticate } from './store/session';
 import Home from './components/homePage'
 import Splash from './components/splashPage'
+import LocationFeed from './components/locations'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -28,27 +29,32 @@ function App() {
 
   return (
     <BrowserRouter>
+    
       <Switch>
+        
         <Route path='/' exact={true}>
           <NavBar />
           <Splash />          
         </Route>
+        
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
+        
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        {/* <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute> */}
+        
         <ProtectedRoute path='/home' exact={true} >
           <Home />
         </ProtectedRoute>
+        
+        <Route path='/locations' exact={true}>
+          <LocationFeed />
+        </Route>
+        
       </Switch>
+      
     </BrowserRouter>
   );
 }
