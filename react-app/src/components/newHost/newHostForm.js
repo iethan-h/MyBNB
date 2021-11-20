@@ -13,7 +13,7 @@ const NewHostForm = () => {
     const [country, setCountry] = useState('')
     const [price, setPrice] = useState('')
     const userId = useSelector((state) => state.session?.user?.id);
-    const [imageUrl, setImageUrl] = useState('')
+    const [image, setImage] = useState('')
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,9 +25,10 @@ const NewHostForm = () => {
             state,
             country,
             price,
-            imageUrl
+            image,
+
         }
-        await dispatch(
+         dispatch(
             newLocation(payload)
         )
     }
@@ -82,8 +83,8 @@ const NewHostForm = () => {
                             <input 
                             type="text" 
                             placeholder="Image URL"
-                            value={imageUrl}
-                            onChange={(e) => setImageUrl(e.target.value)}
+                            value={image}
+                            onChange={(e) => setImage(e.target.value)}
                             />                         
                         </div>
                         <div>

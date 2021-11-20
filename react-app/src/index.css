@@ -1,10 +1,41 @@
-@import url('https://fonts.google.com/specimen/Montserrat#standard-styles');
+/* @import url('https://fonts.google.com/css?family=Montserrat:500'); */
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #24252A;
+    background-color: #edf0f1;
 }
-li, NavLink,button{
-    
+li,.options{
+    font-family:"Monserrat", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #28282B;
+    text-decoration: none;
+    list-style: none;
+}
+h1{
+    font-family:"Monserrat", sans-serif;
+    font-weight: 500;
+    font-size: 50px;
+    color: #28282B; 
+}
+
+.nav_options{
+    display: flex;
+    justify-content:flex-end;
+    align-items:center;
+    padding:30px 10%;
+}
+
+.nav_options li{
+    display: inline-block;
+    padding:0px 20px;
+}
+
+.nav_options li a{
+    transition: all 0.3s ease 0s;
+}
+
+.nav_options li a:hover{
+   color:aqua;
 }
