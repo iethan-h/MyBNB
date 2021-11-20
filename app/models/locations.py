@@ -12,8 +12,7 @@ class Location(db.Model):
     state = db.Column(db.String(250), nullable=False)
     country = db.Column(db.String(250), nullable=False)
     price = db.Column(db.Float, nullable=False)
-    startDate = db.Column(db.DateTime(timezone=True))
-    endDate = db.Column(db.DateTime(timezone=True))
+    image = db.Column(db.String(250), nullable=False)
     createdAt = db.Column(db.DateTime(timezone=True))
     updatedAt = db.Column(db.DateTime(timezone=True))
     
@@ -33,9 +32,8 @@ class Location(db.Model):
              'state': self.state,
              'country': self.country,
              'price': self.price,
-             'startDate':self.startDate,
-             'endDate':self.endDate,
              'userId': self.userId,
+             'image': self.image,
              'createdAt': self.createdAt.strftime("%Y/%m/%d %H:%M:%S"),
              'updatedAt': self.updatedAt.strftime("%Y/%m/%d %H:%M:%S")
         }

@@ -48,12 +48,10 @@ export const newLocation = (payload) => async (dispatch) => {
           },
         body: JSON.stringify(payload)
     })
-    // let result = await response.json()
-    // console.log("*****",result)
-    // if (response.ok) {
-    //     const location = await response.json()
-    //     dispatch(addOneLocation(location))
-    // }
+    if (response.ok) {
+        const location = await response.json()
+        dispatch(addOneLocation(location))
+    }
 }
 
 export const AllLocations = (locations) => async(dispatch)=> {
@@ -109,11 +107,10 @@ const LocationReducer = (state = initialState, action) =>{
             
         case ADD_LOCATION:
             console.log("######",action)
-            // return {
-            //     ...state,
-            //     [action.location?.id]: action.location
-            // }
-            return{ state }
+            return {
+                ...state,
+                [action.location?.id]: action.location
+            }
             
             
         case REMOVE_LOCATION: {
