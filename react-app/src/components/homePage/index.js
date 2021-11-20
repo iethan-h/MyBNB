@@ -8,6 +8,7 @@ import NewHostForm from '../newHost/newHostForm'
 import { Modal } from '../../context/Modal';
 import {NavLink} from 'react-router-dom'
 
+
 const Home = () =>{
     const [showModal, setShowModal] = useState(false);
     
