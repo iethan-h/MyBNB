@@ -54,7 +54,7 @@ export const newLocation = (payload) => async (dispatch) => {
     }
 }
 
-export const AllLocations = (locations) => async(dispatch)=> {
+export const AllLocations = () => async(dispatch)=> {
     const response = await fetch(`/api/locations`);
 	const data = await response.json();
 	dispatch(getAllLocations(data));
@@ -94,19 +94,13 @@ export const deleteLocation = (locationId) => async (dispatch) =>{
 /*-------------REDUCER-------------*/
 const initialState = {}
 const LocationReducer = (state = initialState, action) =>{
-    console.log("%%%%%", action)
     switch(action.type) {
         
         case GET_ALL_LOCATIONS:
-            const newState = {...state}
-            action.locations.forEach(location => {
-                newState[location] = location
-            });
-            return newState;
-            
-            
+            return{...state,
+            ...action.location,}
+   
         case ADD_LOCATION:
-            console.log("######",action)
             return {
                 ...state,
                 [action.location?.id]: action.location

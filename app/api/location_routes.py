@@ -6,7 +6,7 @@ from app.forms.location_form import location_exists,LocationForm
 
 location_routes = Blueprint('locations', __name__)
 
-@location_routes.route('',methods=['GET'])
+@location_routes.route('',methods=['GET','POST'])
 def locations():
     form = LocationForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -16,23 +16,7 @@ def locations():
         db.session.commit()
         return location.to_dict()
     return {location.id: location.to_dict() for location in Location.query.all()}
-
-    
-@location_routes.route('',methods=['POST'])
-def new_locations():
-    form = LocationForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        location = Location(**request.json)
-        db.session.add(location)
-        db.session.commit()
-        print('first return')
-        return location.to_dict()
-    print('second return')    
-    return {location.id: location.to_dict() for location in Location.query.all()}
      
-
-    
     
 @location_routes.route('/<int:id>')
 def location(id):
