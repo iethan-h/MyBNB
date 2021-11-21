@@ -44,10 +44,9 @@ const SignUpForm = () => {
   }
 
   return (
-    <div style={{backgroundImage:` url(${'https://wallpaperaccess.com/full/2694375.jpg'})`}}>
-      <div className='signup-nav'>
-        <a className='home-link' href='/'>Home</a>
-      </div>
+    <div className='page'>
+      <a className='home-link' href='/'>Home</a>
+      <img className='cabin' src='https://wallpaperaccess.com/full/2694375.jpg' alt=''/>
       <div className='center'>
         <h1>Sign up</h1>
         <form onSubmit={onSignUp}>   

@@ -11,7 +11,7 @@ import {NavLink} from 'react-router-dom'
 
 const Home = () =>{
     const [showModal, setShowModal] = useState(false);
-    
+    const userId=useSelector((state)=>state?.session?.user?.id)
     const [showMenu, setShowMenu] = useState(false);
     
     const closeMenu = () => {
@@ -36,11 +36,17 @@ const Home = () =>{
         <div>
             <NavLink to='/locations'>Browse</NavLink>
         </div>
-        <div>
-            <Search/>
-        </div>
+
         <div className='homeBody'>
             <h1 className='greeter'>Find your next adventure with Mybnb!</h1>
+        </div>
+        
+        <div>
+            <NavLink to={`/locations/${userId}`}>My Locations</NavLink>
+        </div>
+        
+        <div>
+            <NavLink to={`/bookings/${userId}`}>My Bookings</NavLink>
         </div>
         
         </>

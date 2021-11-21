@@ -5,12 +5,11 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
-import User from './components/User';
 import { authenticate } from './store/session';
 import Home from './components/homePage'
 import Splash from './components/splashPage'
 import LocationFeed from './components/locations'
+import MyLocations from './components/myLocations'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -18,7 +17,7 @@ function App() {
 
   useEffect(() => {
     (async() => {
-      await dispatch(authenticate());
+      dispatch(authenticate());
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -51,6 +50,10 @@ function App() {
         
         <Route path='/locations' exact={true}>
           <LocationFeed />
+        </Route>
+        
+        <Route path='/locations/:userId' exact={true}>
+          <MyLocations />
         </Route>
         
       </Switch>

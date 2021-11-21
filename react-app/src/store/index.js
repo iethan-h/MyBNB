@@ -6,8 +6,8 @@ import ReviewsReducer from './review'
 
 const rootReducer = combineReducers({
   session,
-  LocationReducer,
-  ReviewsReducer
+  location: LocationReducer,
+  review: ReviewsReducer
 });
 
 
