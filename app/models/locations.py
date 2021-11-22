@@ -24,8 +24,7 @@ class Location(db.Model):
     images = db.relationship('Image', back_populates='locations')
     
     def to_dict(self):
-        return
-        {
+        return {
              'id': self.id,
              'address': self.address,
              'city': self.city,
@@ -34,6 +33,6 @@ class Location(db.Model):
              'price': self.price,
              'userId': self.userId,
              'image': self.image,
-             'createdAt': self.createdAt.strftime("%Y/%m/%d %H:%M:%S"),
-             'updatedAt': self.updatedAt.strftime("%Y/%m/%d %H:%M:%S")
+             'createdAt': self.createdAt,
+             'updatedAt': self.updatedAt
         }

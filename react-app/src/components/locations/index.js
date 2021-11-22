@@ -20,9 +20,11 @@ function LocationFeed()  {
                 <NavLink to='/home'>Home</NavLink>
             </div>
             <h1>Hello from locations!</h1>
-            {locations?.map((location)=>(
-                <LocationCard key={location?.id} location={location}/>
-            ))}
+            <div>
+                {locations?.map((location)=>(
+                    <LocationCard key={location?.id} location={location}/>                   
+                ))}
+            </div>
        </div>
     )
 }
