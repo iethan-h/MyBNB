@@ -6,11 +6,12 @@ import { useHistory } from 'react-router-dom'
 import { deleteLocation } from '../../store/location'
 import { AllLocations } from '../../store/location'
 
-const LocationCard = ({locations}) => {
+const LocationCard = ({location}) => {
     const { id } = useParams();
     const history = useHistory();
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.session?.user?.id)
+    const locations = useSelector(state => Object.values(state.location))
 
     useEffect((id) => {
         dispatch(AllLocations(id))
@@ -28,7 +29,7 @@ const LocationCard = ({locations}) => {
     return (
         <>
             <div className={'one_location'}>
-            <img className="one_location_img" src={locations?.Images[0].url} alt={locations?.address}></img>
+            {/* <img className="one_location_img" src={locations?.Images[0].url} alt={locations?.address}></img> */}
                 <ul className="one_location_details">
                     <li className="one_location_li">{locations?.address}</li>
                     <li className="one_location_li">{locations?.city}</li>

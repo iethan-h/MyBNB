@@ -8,7 +8,7 @@ import {AllLocations} from '../../store/location'
 function LocationFeed()  {
     const dispatch=useDispatch();
     
-    const locations = useSelector((state) => state.location)
+    const locations = useSelector(state => Object.values(state.location))
     
     useEffect(()=>{
         dispatch(AllLocations())
@@ -20,9 +20,9 @@ function LocationFeed()  {
                 <NavLink to='/home'>Home</NavLink>
             </div>
             <h1>Hello from locations!</h1>
-            {/* {locations.map((location)=>(
-                <LocationCard key={location.id} location={location}/>
-            ))} */}
+            {locations?.map((location)=>(
+                <LocationCard key={location?.id} location={location}/>
+            ))}
        </div>
     )
 }
