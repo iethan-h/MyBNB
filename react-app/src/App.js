@@ -10,6 +10,7 @@ import Home from './components/homePage'
 import Splash from './components/splashPage'
 import LocationFeed from './components/locations'
 import MyLocations from './components/myLocations'
+import LocationPage from './components/locations/locationPage'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -50,6 +51,10 @@ function App() {
         
         <Route path='/locations' exact={true}>
           <LocationFeed />
+        </Route>
+        
+        <Route path='/locations/:locationId' exact={true}>
+          <LocationPage />
         </Route>
         
         <Route path='/locations/:userId' exact={true}>

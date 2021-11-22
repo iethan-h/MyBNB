@@ -15,6 +15,7 @@ def locationsss():
         location = Location(**request.json)
         db.session.add(location)
         db.session.commit()
+        print("&&&&&&&&&&&&&&&&&&&&&&&",location.to_dict())
         return location.to_dict()
     else:
         return form.errors
@@ -44,7 +45,7 @@ def editLocation(id):
         
 @location_routes.route('/<int:id>', methods=['DELETE'])
 def delete_location(id):
-    # location = Location.query.get(id)
+    location = Location.query.get(id)
     db.session.delete(location)
     db.session.commit()
     return location.to_dict()
