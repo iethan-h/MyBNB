@@ -11,7 +11,6 @@ const LocationPage =({location}) =>{
     const history = useHistory();
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.session?.user?.id)
-    const locations = useSelector(state => Object.values(state.location))
     
     useEffect((id) => {
         dispatch(getSingleLocation(id))
@@ -20,16 +19,14 @@ const LocationPage =({location}) =>{
     const handleDelete = async (e) => {
         e.preventDefault()
 
-        dispatch(deleteLocation(id))
+        dispatch(deleteLocation(location.id))
         history.push('/home')
     }
     return (
         <div>
-            <h1>welcome to the selected location!</h1>
+            <h1>welcome to {location?.username}'s location</h1>
             <div className={'one_location'}>
-            {/* <img className="one_location_img" src={locations?.Images[0].url} alt={locations?.address}></img> */}
                 <ul className="one_location_details">
-                    {/* <NavLink to={`/locations/${location?.id}`} className="one_location_li">{location?.id}'s Location</NavLink> */}
                     <li className="one_location_li">{location?.address}</li>
                     <li className="one_location_li">{location?.city}</li>
                     <li className="one_location_li">{location?.state}</li>
@@ -39,7 +36,8 @@ const LocationPage =({location}) =>{
             </div>
             {location?.userId === userId ?
             <button type="button" onClick={handleDelete}>Delete Spot</button> :
-            null}
+            <button type="button" onClick={handleDelete}>Leave a review </button>
+}
         </div>
     )
 }

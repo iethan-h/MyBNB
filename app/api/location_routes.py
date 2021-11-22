@@ -15,17 +15,14 @@ def locationsss():
         location = Location(**request.json)
         db.session.add(location)
         db.session.commit()
-        print("&&&&&&&&&&&&&&&&&&&&&&&",location.to_dict())
         return location.to_dict()
     else:
         return form.errors
 
 @location_routes.route('',methods=['GET'])
-
 def all_locations():
     form = LocationForm()
     locations = Location.query.all()
-    print("*****************************",locations)
     return {location.id: location.to_dict() for location in locations}
 
 @location_routes.route('/<int:id>')
