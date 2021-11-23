@@ -123,8 +123,8 @@ const LocationReducer = (state = initialState, action) =>{
         
         case GET_ONE_LOCATION:
             return {
-                ...state,
-             [action.location.id]: action.location
+            ...state,
+            [action.location.id]: action.location
          }
          
          
