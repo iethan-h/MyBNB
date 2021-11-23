@@ -8,20 +8,19 @@ import { AllLocations } from '../../store/location'
 import { NavLink } from 'react-router-dom';
 
 const LocationCard = ({location}) => {
-    const { id } = useParams();
+    const { locationId } = useParams();
     const history = useHistory();
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.session?.user?.id)
     // const locations = useSelector(state => Object.values(state.location))
 
     useEffect((id) => {
-        dispatch(AllLocations(id))
-    }, [dispatch])
+        dispatch(AllLocations(locationId))
+    }, [dispatch, locationId])
 
     const handleDelete = async (e) => {
         e.preventDefault()
-
-        dispatch(deleteLocation(id))
+        dispatch(deleteLocation(locationId))
         history.push('/home')
     }
 
