@@ -26,7 +26,10 @@ body,html{
     padding-top:20px;
     font-size:35px;
     padding:20px;
-    color: white;
+
+}
+form{
+    border-radius: 10px;
 }
 input{
     font-size: 25px;

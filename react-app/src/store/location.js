@@ -66,20 +66,18 @@ export const getSingleLocation = (locationId) => async (dispatch) => {
     dispatch(getALocation(oneLocation))
 }
 
-export const editLocation = (location, locationId) => async (dispatch) => {
-    const response = await fetch(`/api/locations/${locationId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(location),
-      });
-  
-      if (response.ok) {
-        const spot = await response.json();
-        dispatch(editALocation(location));
-        return location;
-      }
+export const editOneLocation = (payload, locationId) => async (dispatch) => {
+    console.log("HIT EDIT")
+    const res = await fetch(`/api/locations/${locationId}`, {
+        method: 'PATCH',
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(payload)
+    })
+    if(res.ok) {
+        const review = await res.json()
+        dispatch(editALocation(review))
+        return review
+    }
 }
 
 export const deleteLocation = (locationId) => async (dispatch) =>{
@@ -115,10 +113,11 @@ const LocationReducer = (state = initialState, action) =>{
             
             
         case EDIT_LOCATION: {
-            return{
-            ...state,
-            [action.location.id]: action.location
-        }}
+            return {
+                ...state,
+                [action.review.id]: action.review
+            }
+        }
         
         
         case GET_ONE_LOCATION:

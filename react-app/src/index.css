@@ -39,3 +39,11 @@ h1{
 .nav_options li a:hover{
    color:aqua;
 }
+button{
+    font-size:15px;
+    border-radius:15px;
+    padding:3px;
+}
+a{
+    text-decoration:none;
+}
