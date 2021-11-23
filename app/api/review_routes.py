@@ -6,6 +6,11 @@ from app.forms.review_form import review_exists,ReviewForm
 
 review_routes = Blueprint('reviews', __name__)
 
+@review_routes.route("")
+
+def home():
+    return {review.id: review.to_dict() for review in Review.query.all()}
+
 @review_routes.route('',methods=['POST'])
 @login_required
 def reviews():
@@ -30,11 +35,12 @@ def review(id):
     review = Review.query.get(id)
     return review.to_dict()
     
-@review_routes.route('/<int:id>', methods=['PUT'])
+@review_routes.route('/<int:id>', methods=['PATCH'])
 def editReview(id):
     form = ReviewForm()
     if form.validate_on_submit():
-        review = Review(**request.json)
+        review_edit= Review.query.get(id)
+        review_edit.review = form.data["review"]
         db.session.commit()
         return review.to_dict()
     else:

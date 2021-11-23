@@ -30,6 +30,12 @@ const LoginForm = () => {
   if (user) {
     return <Redirect to='/home' />;
   }
+  
+//   const demoUser = async () => {
+//     history.push('/home')
+//   //   dispatch(hideModal())
+//   return dispatch(sessionActions.login({credential: "Demo-lition", password: 'password'}))
+// }
 
   return (
     

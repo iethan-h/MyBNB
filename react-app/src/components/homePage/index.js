@@ -29,6 +29,7 @@ const Home = () =>{
             <div>
                 <NavLink className='browse' to='/locations'>Browse</NavLink>
             </div>
+            
             <div> 
                 <LogoutButton />
             </div>

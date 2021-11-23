@@ -67,7 +67,6 @@ export const getSingleLocation = (locationId) => async (dispatch) => {
 }
 
 export const editOneLocation = (payload, locationId) => async (dispatch) => {
-    console.log("HIT EDIT")
     const res = await fetch(`/api/locations/${locationId}`, {
         method: 'PATCH',
         headers: {"Content-Type": "application/json"},
