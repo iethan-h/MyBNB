@@ -1,18 +1,21 @@
 import {NavLink} from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState} from 'react'
 import {useDispatch}from 'react-redux'
 import {useSelector} from 'react-redux'
-import {AllLocations,getSingleLocation, deleteLocation} from '../../store/location'
+import {AllLocations,getSingleLocation, deleteLocation, editLocation} from '../../store/location'
 import { useParams } from 'react-router'
-import LocationPage from './locationPage'
 import { useHistory } from 'react-router-dom'
+import { Modal } from '../../context/Modal';
+import EditMyLocation from '../editLocation'
 
 function LoadLocation()  {
+    const [showModal, setShowModal] = useState(false);
     const dispatch=useDispatch();
     const history = useHistory();
-   const {locationId} = useParams()
-   const userId = useSelector((state) => state.session?.user?.id)
+    const {locationId} = useParams()
+    const userId = useSelector((state) => state.session?.user?.id)
     const locationOne = useSelector(state => state.location)
+    
     const location = locationOne[locationId]
     useEffect(()=>{
         dispatch(getSingleLocation(locationId))
@@ -28,6 +31,7 @@ function LoadLocation()  {
         dispatch(deleteLocation(location.id))
         history.push('/home')
     }
+ 
     return(
         <div>
             <div>
@@ -42,8 +46,14 @@ function LoadLocation()  {
                     <li className="one_location_li">${location?.price} per night</li>
                 </ul>
             </div>
+            <div>
+                <NavLink to={`locations/${locationId}/reviews`}>Read stories</NavLink>
+            </div>
             {location?.userId === userId ?
-            <button type="button" onClick={handleDelete}>Delete Spot</button> :
+            <div>
+                <EditMyLocation />
+                <button type="button" onClick={handleDelete}>Delete Location</button>            
+            </div>:
             <button type="button" onClick={handleDelete}>Leave a review </button>
 }
         </div>

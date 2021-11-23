@@ -2,13 +2,14 @@ from flask import Blueprint, request, jsonify
 from flask_login import login_required
 from app.models import db, Location
 from app.forms.location_form import location_exists,LocationForm
+from app.forms.edit_location import EditLocationForm
 
 
 location_routes = Blueprint('locations', __name__)
 
 @location_routes.route('',methods=['POST'])
 @login_required
-def locationsss():
+def locations():
     form = LocationForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
@@ -30,13 +31,21 @@ def location(id):
     location = Location.query.get(id)
     return location.to_dict()
     
-@location_routes.route('/<int:id>', methods=['PUT'])
+@location_routes.route('/<int:id>', methods=['PATCH'])
 def editLocation(id):
-    form = LocationForm()
+    form = EditLocationForm()
     if form.validate_on_submit():
-        location = Location(**request.json)
+        
+        locations = Location.query.get(id)
+        locations.address = form.data['address']
+        locations.city = form.data['city']
+        locations.state = form.data['state']
+        locations.country = form.data['country']
+        locations.price = form.data['price']
+        locations.image = form.data['image']
+            
         db.session.commit()
-        return location.to_dict()
+        return locations.to_dict()
     else:
         return form.errors
         
