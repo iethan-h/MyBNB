@@ -7,10 +7,11 @@ import {newReview} from '../../store/review'
 
 const ReviewForm = ({setShowModal}) =>{
     const userId = useSelector((state) => state.session?.user?.id);
-    const locationId = useSelector((state) => state.location?.id);
+    const locationId = useSelector((state) => state?.location?.id);
     const dispatch = useDispatch();
     // const [errors, setErrors] = useState([])
     const [review, setReview] = useState('')
+    console.log("THIS IS THE LOCATION ID",locationId)
     
 
         
@@ -20,10 +21,10 @@ const ReviewForm = ({setShowModal}) =>{
         const payload ={
             userId,
             review,
-            locationId
+            locationId:locationId
 
         }
-         dispatch(
+         await dispatch(
             newReview(payload)
         )
     }
@@ -34,9 +35,9 @@ const ReviewForm = ({setShowModal}) =>{
                 <fieldset>
                     <legend>Write a new review</legend>
                         <div>
-                            <input
+                            <textarea
                              type="text" 
-                             placeholder="Type here ..." 
+                             placeholder="Type here..." 
                              value={review}
                              onChange={(e) => setReview(e.target.value)}
                              />

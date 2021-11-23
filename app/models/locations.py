@@ -33,6 +33,7 @@ class Location(db.Model):
              'price': self.price,
              'userId': self.userId,
              'image': self.image,
+             'review_id':[reviews.id for review in self.reviews],
              'createdAt': self.createdAt,
              'updatedAt': self.updatedAt
         }

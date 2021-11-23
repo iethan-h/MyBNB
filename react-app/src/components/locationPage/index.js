@@ -44,15 +44,15 @@ function LoadLocation()  {
                     <li className="one_location_li">${location?.price} per night</li>
                 </ul>
             </div>
-            <div>
+            {/* <div>
                 <NavLink to={`${locationId}/reviews`}>Read stories</NavLink>
-            </div>
+            </div> */}
             {location?.userId === userId ?
             <div>
                 <EditMyLocation />
                 <button type="button" onClick={handleDelete}>Delete Location</button>            
             </div>:
-            <button type="button" onClick={handleDelete}>Leave a review </button>
+            null
 }
         </div>
     )
