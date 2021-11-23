@@ -63,13 +63,14 @@ function App() {
           <MyLocations />
         </Route>
         
+        <Route path='/locations/:locationId' exact={true}>
+          <UpdateLocation />
+        </Route>
+        
         <Route path='/locations/:locationId/reviews' exact={true}>
           <NewReview />
         </Route>
         
-        <Route path='/locations/:locationId' exact={true}>
-          <UpdateLocation />
-        </Route>
         
       </Switch>
       

@@ -1,15 +1,13 @@
 import {NavLink} from 'react-router-dom'
-import { useEffect, useState} from 'react'
+import { useEffect} from 'react'
 import {useDispatch}from 'react-redux'
 import {useSelector} from 'react-redux'
-import {AllLocations,getSingleLocation, deleteLocation, editLocation} from '../../store/location'
+import {getSingleLocation, deleteLocation} from '../../store/location'
 import { useParams } from 'react-router'
 import { useHistory } from 'react-router-dom'
-import { Modal } from '../../context/Modal';
 import EditMyLocation from '../editLocation'
 
 function LoadLocation()  {
-    const [showModal, setShowModal] = useState(false);
     const dispatch=useDispatch();
     const history = useHistory();
     const {locationId} = useParams()
@@ -35,7 +33,7 @@ function LoadLocation()  {
     return(
         <div>
             <div>
-                <NavLink to='/locations'>Home</NavLink>
+                <NavLink to='/home'>Home</NavLink>
             </div>
             <div className={'one_location'}>
                 <ul className="one_location_details">
@@ -47,7 +45,7 @@ function LoadLocation()  {
                 </ul>
             </div>
             <div>
-                <NavLink to={`locations/${locationId}/reviews`}>Read stories</NavLink>
+                <NavLink to={`${locationId}/reviews`}>Read stories</NavLink>
             </div>
             {location?.userId === userId ?
             <div>
