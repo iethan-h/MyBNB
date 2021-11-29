@@ -34,16 +34,26 @@ function LoadLocation()  {
         <div>
             <div>
                 <NavLink to='/home'>Home</NavLink>
+                <NavLink to='/locations'>Back to browse</NavLink>
             </div>
-            <div className={'one_location'}>
-                <ul className="one_location_details">
-                    <li className="one_location_li">{location?.address}</li>
-                    <li className="one_location_li">{location?.city}</li>
-                    <li className="one_location_li">{location?.state}</li>
-                    <li className="one_location_li">{location?.country}</li>
-                    <li className="one_location_li">${location?.price} per night</li>
-                </ul>
-            </div>
+            <div className="locationImage">
+                        <img className="locationImg" src={location?.image} alt=""/>
+                    </div>
+                    <div className="locationAddress">
+                        <p className="one_location_li">{location?.address}</p>
+                    </div>
+                    <div className="locationCity">
+                        <p className="one_location_li">{location?.city}</p>
+                    </div>
+                    <div className="locationState">
+                        <p className="one_location_li">{location?.state}</p>
+                    </div>
+                    <div className="locationCountry">
+                        <p className="one_location_li">{location?.country}</p>
+                    </div>
+                    <div className="locationPrice">
+                        <p className="one_location_li">${location?.price} per night</p>
+                    </div>
             {/* <div>
                 <NavLink to={`${locationId}/reviews`}>Read stories</NavLink>
             </div> */}
