@@ -4,6 +4,7 @@ import LocationCard from './locationCard'
 import {useDispatch}from 'react-redux'
 import {useSelector} from 'react-redux'
 import {AllLocations} from '../../store/location'
+import './index.css'
 
 function LocationFeed()  {
     const dispatch=useDispatch();
@@ -15,14 +16,15 @@ function LocationFeed()  {
     },[dispatch])
     
     return(
-        <div>
+        <div className='locationContainer'>
             <div>
                 <NavLink to='/home'>Home</NavLink>
             </div>
-            <h1>Hello from locations!</h1>
-            <div>
+            <div className='feedWrapper'>
                 {locations?.map((location)=>(
-                    <LocationCard key={location?.id} location={location}/>                   
+                    <div className='locationCards'>
+                    <LocationCard key={location?.id} location={location}/> 
+                    </div>                  
                 ))}
             </div>
        </div>
