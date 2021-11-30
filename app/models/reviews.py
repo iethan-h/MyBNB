@@ -22,7 +22,5 @@ class Review(db.Model):
             'id': self.id,
             'locationId': self.locationId,
             'userId': self.userId,
-            'review': self.review,
-            'createdAt': self.createdAt.strftime("%Y/%m/%d %H:%M:%S"),
-            'updatedAt': self.updatedAt.strftime("%Y/%m/%d %H:%M:%S")
+            'review': self.review
         }
