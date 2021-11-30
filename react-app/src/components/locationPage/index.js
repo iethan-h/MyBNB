@@ -47,9 +47,10 @@ function LoadLocation()  {
     return(
         <div>
             <div>
-                <NavLink to='/home'>Home</NavLink>
-                <NavLink to='/locations'>Back to browse</NavLink>
+                <NavLink className='loggedInNav' to='/home'>Home</NavLink>
+                <NavLink className='loggedInNav' to='/locations'>Back to browse</NavLink>
             </div>
+            <div className="locationInfo">
             <div className="locationImage">
                         <img className="locationImg" src={location?.image} alt=""/>
                     </div>
@@ -68,24 +69,29 @@ function LoadLocation()  {
                     <div className="locationPrice">
                         <p className="one_location_li">${location?.price} per night</p>
                     </div>
-            {location?.userId === userId ?
-                <div>
-                    {/* <EditMyLocation /> */}
-                    <button type="button" onClick={handleDelete}>Delete Location</button>            
-                </div>:
-                        null
-            }  
+                    <hr />
+                    </div>
+                    <div className='options'>
+
             
                        
-            <div>
+            
                 <button onClick={() => setShowModal(true)}>Write a new story</button>
                     {showModal && (
                         <Modal onClose={() => setShowModal(false)}>
                             <ReviewForm  setShowModal={setShowModal}  locationId={locationId}/>
                         </Modal>
                     )}
-            </div> 
+                    <h2>Read stories from visitors</h2>
+                        {location?.userId === userId ?
+                <>
+                    {/* <EditMyLocation /> */}
+                    <button className="deleteLocation" type="button"  onClick={handleDelete}>Delete Location</button>            
+                </>:
+                        null
+            }  
             
+            </div>
            
             
             

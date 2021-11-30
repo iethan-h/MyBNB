@@ -43,7 +43,7 @@ const LoginForm = () => {
       <a className='home-link' href='/'>Home</a>
       <img className='cabin' src='https://wallpaperaccess.com/full/2694375.jpg' alt=''/>
       <div className='center'>
-        <h1>Sign up</h1>
+        <h1>Welcome back!</h1>
         <form onSubmit={onLogin}>   
           <div>
             {errors.map((error, ind) => (

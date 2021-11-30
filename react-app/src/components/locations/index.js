@@ -18,8 +18,12 @@ function LocationFeed()  {
     return(
         <div className='locationContainer'>
             <div>
-                <NavLink to='/home'>Home</NavLink>
+                <NavLink className="loggedInNav" to='/home'>Home</NavLink>
             </div>
+            <div className="locWelcome">
+                <h1>Browse ALL of our locations</h1>
+            </div>
+                <hr/>
             <div className='feedWrapper'>
                 {locations?.map((location)=>(
                     <div className='locationCards'>

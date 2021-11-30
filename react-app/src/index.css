@@ -28,16 +28,16 @@ h1{
     padding:30px 10%;
 }
 
-.nav_options li{
+li{
     display: inline-block;
     padding:0px 20px;
 }
 
-.nav_options li a{
+li a{
     transition: all 0.3s ease 0s;
 }
 
-.nav_options li a:hover{
+li a:hover{
    color:aqua;
 }
 button{

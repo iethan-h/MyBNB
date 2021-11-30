@@ -4,6 +4,7 @@ import {deleteReview, editReview} from '../../store/review'
 import { Modal } from '../../context/Modal';
 import { useState, useEffect } from 'react'
 import ReviewEdit from './editReview'
+import './reviews.css'
 
 
 const ReviewCard = ({review}) =>{
@@ -17,26 +18,29 @@ const ReviewCard = ({review}) =>{
     }
     
     return(
-        <div>
-            <div className={'one_location'}>
-                <p>{review.review}</p>
+        <div className='feedWrapper'>
+        <div className='reviewBox'>
+            <div>
+                <p className="reviews">{review.review}</p>
             </div>
             <div>
                 {review?.userId === userId ?
                 <>
+                <div className='userOptions'>
                     <button type="button" onClick={handleDelete}>Delete review</button> 
-                    
-                <button onClick={() => setShowModal(true)}>Edit Review</button>
-                    {showModal && (
-                        <Modal onClose={() => setShowModal(false)}>
-                             <ReviewEdit setShowModal={setShowModal} reviewId={review.id}/>
-                        </Modal>
-                    )}
-            
+                        
+                    <button onClick={() => setShowModal(true)}>Edit Review</button>
+                        {showModal && (
+                            <Modal onClose={() => setShowModal(false)}>
+                                <ReviewEdit setShowModal={setShowModal} reviewId={review.id}/>
+                            </Modal>
+                        )}
+                </div>
                 </>
                 :
                 null}
             </div>
+        </div>
         </div>
     )
 }

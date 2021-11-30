@@ -13,6 +13,7 @@ import MyLocations from './components/myLocations'
 import LoadLocation from './components/locationPage'
 import NewReview from './components/reviews'
 import UpdateLocation from './components/editLocation'
+import Footer from './components/footer'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -66,10 +67,12 @@ function App() {
         <Route path='/locations/:locationId' exact={true}>
           <UpdateLocation />
         </Route>
- 
+      
       </Switch>
       
+       <Footer/>
     </BrowserRouter>
+   
   );
 }
 

@@ -8,14 +8,14 @@ function NewHost () {
     const [showModal, setShowModal] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     
-    // const closeMenu = () => {
-    //     setShowMenu(false);
-    //   };
+    const closeMenu = () => {
+        setShowMenu(false);
+      };
       
-    // const openMenu = () => {
-    //     if (showMenu) return;
-    //     setShowMenu(true);
-    // };
+    const openMenu = () => {
+        if (showMenu) return;
+        setShowMenu(true);
+    };
 
     return (
         <div>
@@ -24,12 +24,12 @@ function NewHost () {
       <div>
        
           <button
-            onClick={() => setShowModal(true)}>
+            onClick={() => setShowMenu(true)}>
             Sign Up
           </button>
         
-        {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
+        {showMenu && (
+          <Modal onClose={() => setShowMenu(false)}>
             <NewHostForm />
           </Modal>
         )}
