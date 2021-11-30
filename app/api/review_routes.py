@@ -12,7 +12,7 @@ def home():
     return {review.id: review.to_dict() for review in Review.query.all()}
 
 @review_routes.route('',methods=['POST'])
-@login_required
+
 def reviews():
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']

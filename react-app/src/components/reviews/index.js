@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import {useSelector} from 'react-redux'
 import { Modal } from '../../context/Modal';
 import ReviewForm from './newReview'
-import {AllReviews} from '../../store/review'
-import ReviewCard from './reviewCard'
+
 
 const NewReview = () =>{
     const reviews = useSelector(state => Object.values(state.location))
@@ -18,12 +17,6 @@ const NewReview = () =>{
                             <ReviewForm  setShowModal={setShowModal}/>
                         </Modal>
                     )}
-            </div>
-            <div>
-            {reviews?.map((review) =>(
-                    <ReviewCard key={review?.id} review={review}/>                   
-                ))}
-                
             </div>
         </>
         )

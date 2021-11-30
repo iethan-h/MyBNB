@@ -5,7 +5,9 @@ import {useSelector} from 'react-redux'
 import {getSingleLocation, deleteLocation} from '../../store/location'
 import { useParams } from 'react-router'
 import { useHistory } from 'react-router-dom'
-import EditMyLocation from '../editLocation'
+// import EditMyLocation from '../editLocation'
+import ReviewCard from '../reviews/reviewCard'
+import {AllReviews} from '../../store/review'
 
 function LoadLocation()  {
     const dispatch=useDispatch();
@@ -29,6 +31,13 @@ function LoadLocation()  {
         dispatch(deleteLocation(location.id))
         history.push('/home')
     }
+    
+    const reviews = useSelector(state =>Object.values(state.review))
+    const { reviewId } = useParams();
+    
+    useEffect(()=>{
+        dispatch(AllReviews(reviewId))
+    },[dispatch,reviewId])
  
     return(
         <div>
@@ -54,17 +63,22 @@ function LoadLocation()  {
                     <div className="locationPrice">
                         <p className="one_location_li">${location?.price} per night</p>
                     </div>
-            {/* <div>
-                <NavLink to={`${locationId}/reviews`}>Read stories</NavLink>
-            </div> */}
             {location?.userId === userId ?
-            <div>
-                <EditMyLocation />
-                <button type="button" onClick={handleDelete}>Delete Location</button>            
-            </div>:
-            null
-}
+                <div>
+                    {/* <EditMyLocation /> */}
+                    <button type="button" onClick={handleDelete}>Delete Location</button>            
+                </div>:
+                        null
+            }       
+         <div>
+            {reviews?.map((review) =>(
+                <div className="reviewCards">
+                    <ReviewCard key={review?.id} review={review}/>
+                </div>
+            ))}
         </div>
+        </div>
+
     )
 }
 export default LoadLocation

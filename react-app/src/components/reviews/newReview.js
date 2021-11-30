@@ -7,7 +7,7 @@ import {newReview} from '../../store/review'
 
 const ReviewForm = ({setShowModal}) =>{
     const userId = useSelector((state) => state.session?.user?.id);
-    const locationId = useSelector((state) => state?.location?.id);
+    const locationId = useSelector(state => Object.keys(state.location));
     const dispatch = useDispatch();
     // const [errors, setErrors] = useState([])
     const [review, setReview] = useState('')
