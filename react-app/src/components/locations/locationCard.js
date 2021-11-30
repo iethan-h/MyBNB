@@ -6,43 +6,47 @@ import { useHistory } from 'react-router-dom'
 import { deleteLocation } from '../../store/location'
 import { AllLocations } from '../../store/location'
 import { NavLink } from 'react-router-dom';
+import './index.css'
+
+
 
 const LocationCard = ({location}) => {
-    const { id } = useParams();
+    const { locationId } = useParams();
     const history = useHistory();
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.session?.user?.id)
-    // const locations = useSelector(state => Object.values(state.location))
 
     useEffect((id) => {
-        dispatch(AllLocations(id))
-    }, [dispatch])
-
-    const handleDelete = async (e) => {
-        e.preventDefault()
-
-        dispatch(deleteLocation(id))
-        history.push('/home')
-    }
+        dispatch(AllLocations(locationId))
+    }, [dispatch, locationId])
 
 
     
     return (
         <>
-            <div className={'one_location'}>
+            <div className='one_location'>
             {/* <img className="one_location_img" src={locations?.Images[0].url} alt={locations?.address}></img> */}
-                <ul className="one_location_details">
-                    <NavLink to={`/locations/${location?.id}`} className="one_location_li">{location?.id}'s Location</NavLink>
-                    <li className="one_location_li">{location?.address}</li>
-                    <li className="one_location_li">{location?.city}</li>
-                    <li className="one_location_li">{location?.state}</li>
-                    <li className="one_location_li">{location?.country}</li>
-                    <li className="one_location_li">${location?.price} per night</li>
-                </ul>
+                    <NavLink to={`/locations/${location?.id}`} className="one_location_li">More info</NavLink>
+                    <div className="locationImage">
+                        <img className="locationImg" src={location?.image} alt=""/>
+                    </div>
+                    <div className="locationAddress">
+                        <p className="one_location_li">{location?.address}</p>
+                    </div>
+                    <div className="locationCity">
+                        <p className="one_location_li">{location?.city}</p>
+                    </div>
+                    <div className="locationState">
+                        <p className="one_location_li">{location?.state}</p>
+                    </div>
+                    <div className="locationCountry">
+                        <p className="one_location_li">{location?.country}</p>
+                    </div>
+            
+                {location?.userId === userId ?
+                <p className="ownerNotif" style={{color: "red",display: "flex", justifyContent: "center"}}> Your location</p> :
+                null}
             </div>
-            {location?.userId === userId ?
-            <button type="button" onClick={handleDelete}>Delete Spot</button> :
-            null}
         </>
     )
 }

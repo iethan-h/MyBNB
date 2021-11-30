@@ -1,0 +1,16 @@
+.browse{
+    color:black;
+    font-size:30px;
+}
+.homeBody{
+display: flex;
+justify-content:center;
+margin: center;
+}
+
+.logged_in_nav{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 10px;
+}

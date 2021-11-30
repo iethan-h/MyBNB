@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     background-color: #edf0f1;
+    font-family: "Open Sans", "Helvetica Neue",
 }
 li,.options{
     font-family:"Monserrat", sans-serif;
@@ -38,4 +39,19 @@ h1{
 
 .nav_options li a:hover{
    color:aqua;
+}
+button{
+    font-size:15px;
+    border-radius:15px;
+    padding:3px;
+}
+a{
+    text-decoration:none;
+}
+
+h2,h3,h4,h5,h6,p{
+    font-family:"Monserrat", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    color: #28282B;  
 }

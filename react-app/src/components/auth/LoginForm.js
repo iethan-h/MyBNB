@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import './signup.css'
-
+ 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -30,6 +30,12 @@ const LoginForm = () => {
   if (user) {
     return <Redirect to='/home' />;
   }
+  
+//   const demoUser = async () => {
+//     history.push('/home')
+//   //   dispatch(hideModal())
+//   return dispatch(sessionActions.login({credential: "Demo-lition", password: 'password'}))
+// }
 
   return (
     

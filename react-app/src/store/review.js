@@ -6,31 +6,31 @@ const EDIT_REVIEW = '/reviews/EDIT_REVIEW'
 
 /*-------------ACTIONS-------------*/
 
-const addReview = review =>({
+const addReview = (review) =>({
     type:ADD_REVIEW,
     
     review
 })
 
-const getOneReview = review =>({
+const getOneReview = (review) =>({
     type:GET_ONE_REVIEW,
     
     review
 })
 
-const getAllReviews = review =>review =>({
+const getAllReviews = (review) =>({
     type:GET_ALL_REVIEWS,
     
     review
 })
 
-const removeReview = review =>({
+const removeReview = (review) =>({
     type:REMOVE_REVIEW,
     
     review
 })
 
-const editAReview = review =>({
+const editAReview = (review) =>({
     type:EDIT_REVIEW,
     
     review
@@ -38,24 +38,25 @@ const editAReview = review =>({
 
 /*-------------THUNKS-------------*/
 
-export const newReview = (payload, userId) => async (dispatch) => {
-    const response = await fetch(`/api/reviews`, {
-        method: 'POST',
-        headers: {
-            'Content-Type' : 'application/json',
-          },
-        body: JSON.stringify({...payload, userId})
+export const newReview = (review) => async (dispatch) => {
+    const res = await fetch("/api/reviews", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(review)
     })
-    if (response.ok) {
-        const review = await response.json()
+    if (res.ok){
+        const review = await res.json()
         dispatch(addReview(review))
+        return review
     }
 }
 
 export const AllReviews = (reviews) => async(dispatch)=> {
-    const response = await fetch(`/api/reviews`);
-	const data = await response.json();
-	dispatch(getAllReviews(data));
+    const res = await fetch("/api/reviews")
+    if (res.ok) {
+        const reviews = await res.json()
+        dispatch(getAllReviews(reviews))
+    }
 }
 
 export const getReview = (reviewId) => async (dispatch) => {
@@ -75,8 +76,8 @@ export const editReview = (review, reviewId) => async (dispatch) => {
   
       if (response.ok) {
         const data = await response.json();
-        dispatch(editAReview(review));
-        return review;
+        dispatch(editAReview(data));
+        return data;
       }
 }
 
@@ -92,16 +93,11 @@ export const deleteReview = (reviewId) => async (dispatch) =>{
 /*-------------REDUCER-------------*/
 
 const ReviewsReducer = (state = {}, action) =>{
-    let newState;
     switch(action.type) {
         
-        
         case GET_ALL_REVIEWS:
-            newState = {...state}
-            action.reviews.forEach(review => {
-                newState[review?.id] = review
-            });
-            return newState;
+            return {...state,
+            ...action.review};
             
             
         case ADD_REVIEW:

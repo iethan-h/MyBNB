@@ -19,7 +19,7 @@ class Location(db.Model):
     
     #relationships
     user = db.relationship('User', back_populates='locations')
-    reviews = db.relationship('Review', back_populates='locations')
+    reviews = db.relationship('Review', back_populates='locations', cascade="all, delete")
     booking = db.relationship('Booking', back_populates='locations')
     images = db.relationship('Image', back_populates='locations')
     
@@ -33,6 +33,7 @@ class Location(db.Model):
              'price': self.price,
              'userId': self.userId,
              'image': self.image,
+             'review_id':[reviews.id for reviews in self.reviews],
              'createdAt': self.createdAt,
              'updatedAt': self.updatedAt
         }

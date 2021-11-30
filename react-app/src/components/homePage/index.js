@@ -7,6 +7,7 @@ import Search from '../search/searchForm'
 import NewHostForm from '../newHost/newHostForm'
 import { Modal } from '../../context/Modal';
 import {NavLink} from 'react-router-dom'
+import './homepage.css'
 
 
 const Home = () =>{
@@ -24,30 +25,34 @@ const Home = () =>{
     };
     return(
         <> 
-        <div> 
-            <LogoutButton />
+        <div className='logged_in_nav'>
+            <div>
+                <NavLink className='browse' to='/locations'>Browse</NavLink>
+            </div>
+            
+            <div> 
+                <LogoutButton />
+            </div>
+            <div>
+            <button onClick={showMenu === false ? openMenu : closeMenu}>Be a Host</button>
+            {showMenu && (    
+                <NewHostForm/>         
+            )}
+            </div>
         </div>
-        <div>
-        <button onClick={showMenu === false ? openMenu : closeMenu}>Be a Host</button>
-        {showMenu && (    
-            <NewHostForm/>         
-          )}
-        </div>
-        <div>
-            <NavLink to='/locations'>Browse</NavLink>
-        </div>
+
 
         <div className='homeBody'>
             <h1 className='greeter'>Find your next adventure with Mybnb!</h1>
         </div>
-        
+{/*         
         <div>
             <NavLink to={`/locations/${userId}`}>My Locations</NavLink>
         </div>
         
         <div>
             <NavLink to={`/bookings/${userId}`}>My Bookings</NavLink>
-        </div>
+        </div> */}
         
         </>
     )

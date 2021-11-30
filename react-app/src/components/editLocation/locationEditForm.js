@@ -1,46 +1,42 @@
-/* eslint-disable no-unused-vars */
-import React, { useState} from "react";
-import { useDispatch,useSelector} from "react-redux";
-import {newLocation,AllLocations} from '../../store/location'
-import {useFormik} from 'formik'
-import * as yup from 'yup';
+import { useState} from 'react'
+import {useDispatch, useSelector}from 'react-redux'
+import {editOneLocation} from '../../store/location'
+import { useParams } from 'react-router'
 
 
-const NewHostForm = () => {
 
-    const dispatch = useDispatch();
-    const [errors, setErrors] = useState([])
+
+const EditMyLocation = ({setShowModal, location}) => {
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')
     const [state, setState] = useState('')
     const [country, setCountry] = useState('')
     const [price, setPrice] = useState('')
-    const userId = useSelector((state) => state.session?.user?.id);
     const [image, setImage] = useState('')
+
+    const dispatch=useDispatch();
+
     
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const payload ={
-            userId,
-            address,
-            city,
-            state,
-            country,
-            price,
-            image,
-
-        }
-         dispatch(
-            newLocation(payload)
-        )
+    const handleEdit = async (e) => {
+    e.preventDefault()
+    
+    const locationEdit = {
+        address,
+        city,
+        state,
+        country,
+        price,
+        image  
     }
-    
-    return (
+    dispatch(editOneLocation(locationEdit, location?.id))
+     setShowModal(false)
+    }
+    return(
+        <>
         <div>
             <form>
                 <fieldset>
-                    <legend>Host a location</legend>
+                    <legend>Udate a location</legend>
 
                         <div>
                             <input
@@ -91,12 +87,12 @@ const NewHostForm = () => {
                             />                         
                         </div>
                         <div>
-                            <button onClick={handleSubmit}>Submit</button>
+                            <button onClick={handleEdit}>Submit</button>
                         </div>
                 </fieldset>
             </form>   
         </div>
+        </>
     )
-    
 }
-export default NewHostForm
+export default EditMyLocation
