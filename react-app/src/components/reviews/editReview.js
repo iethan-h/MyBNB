@@ -1,29 +1,24 @@
 import React, { useState} from "react";
 import { useDispatch,useSelector} from "react-redux";
-import {newReview} from '../../store/review'
+import {editReview} from '../../store/review'
 
 
 
 
-const ReviewForm = ({setShowModal,locationId}) =>{
-    const userId = useSelector((state) => state.session?.user?.id);
-    // const locationId = useSelector(state => Object.key(state.location));
+const ReviewEdit = ({setShowModal,reviewId}) =>{
+    // const userId = useSelector((state) => state.session?.user?.id);
     const dispatch = useDispatch();
-    // const [errors, setErrors] = useState([])
-    const [review, setReview] = useState('')
-    
-
-        
-        const handleSubmit = async (e) => {
+    const [review, setReview] = useState('')  
+        const handleEdit = async (e) => {
         e.preventDefault();
 
         const payload ={
-            userId,
-            review,
-            locationId
+            // userId,
+            // review,
+            reviewId
         }
          await dispatch(
-            newReview(payload)
+            editReview(payload)
         )
     }
     
@@ -42,7 +37,7 @@ const ReviewForm = ({setShowModal,locationId}) =>{
                         </div>
                         
                         <div>
-                            <button onClick={handleSubmit}>Submit</button>
+                            <button onClick={handleEdit}>Submit</button>
                         </div>
                 </fieldset>
             </form>   
@@ -52,4 +47,4 @@ const ReviewForm = ({setShowModal,locationId}) =>{
     
 }
 
-export default ReviewForm
+export default ReviewEdit

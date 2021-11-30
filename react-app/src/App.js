@@ -57,7 +57,6 @@ function App() {
         
         <Route path='/locations/:locationId' exact={true}>
           <LoadLocation />
-          <NewReview />
         </Route>
         
         <Route path='/locations/:userId' exact={true}>
@@ -67,12 +66,7 @@ function App() {
         <Route path='/locations/:locationId' exact={true}>
           <UpdateLocation />
         </Route>
-        
-        {/* <Route path='/locations/:locationId/reviews' exact={true}>
-          <NewReview />
-        </Route> */}
-        
-        
+ 
       </Switch>
       
     </BrowserRouter>

@@ -1,5 +1,5 @@
 import {NavLink} from 'react-router-dom'
-import { useEffect} from 'react'
+import { useEffect,useState} from 'react'
 import {useDispatch}from 'react-redux'
 import {useSelector} from 'react-redux'
 import {getSingleLocation, deleteLocation} from '../../store/location'
@@ -8,8 +8,13 @@ import { useHistory } from 'react-router-dom'
 // import EditMyLocation from '../editLocation'
 import ReviewCard from '../reviews/reviewCard'
 import {AllReviews} from '../../store/review'
+import NewReview from '../reviews/newReview'
+import { Modal } from '../../context/Modal';
+import ReviewForm from '../reviews/newReview'
+import ReviewEdit from '../reviews/editReview'
 
 function LoadLocation()  {
+    const [showModal, setShowModal] = useState(false);
     const dispatch=useDispatch();
     const history = useHistory();
     const {locationId} = useParams()
@@ -69,13 +74,30 @@ function LoadLocation()  {
                     <button type="button" onClick={handleDelete}>Delete Location</button>            
                 </div>:
                         null
-            }       
+            }  
+            
+                       
+            <div>
+                <button onClick={() => setShowModal(true)}>Write a new story</button>
+                    {showModal && (
+                        <Modal onClose={() => setShowModal(false)}>
+                            <ReviewForm  setShowModal={setShowModal}  locationId={locationId}/>
+                        </Modal>
+                    )}
+            </div> 
+            
+           
+            
+            
+                 
          <div>
             {reviews?.map((review) =>(
                 <div className="reviewCards">
                     <ReviewCard key={review?.id} review={review}/>
                 </div>
             ))}
+
+            {/* <NewReview locationId={locationId}/> */}
         </div>
         </div>
 
