@@ -8,6 +8,7 @@ import { AllLocations } from '../../store/location'
 import { NavLink } from 'react-router-dom';
 import './index.css'
 
+
 const LocationCard = ({location}) => {
     const { locationId } = useParams();
     const history = useHistory();

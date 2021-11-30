@@ -76,8 +76,8 @@ export const editReview = (review, reviewId) => async (dispatch) => {
   
       if (response.ok) {
         const data = await response.json();
-        dispatch(editAReview(review));
-        return review;
+        dispatch(editAReview(data));
+        return data;
       }
 }
 
@@ -93,9 +93,7 @@ export const deleteReview = (reviewId) => async (dispatch) =>{
 /*-------------REDUCER-------------*/
 
 const ReviewsReducer = (state = {}, action) =>{
-    let newState;
     switch(action.type) {
-        
         
         case GET_ALL_REVIEWS:
             return {...state,

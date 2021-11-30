@@ -1,6 +1,8 @@
 import { useDispatch,useSelector} from "react-redux";
-import deleteReview from '../../store/review'
+import {deleteReview} from '../../store/review'
 import { useParams } from 'react-router'
+import {AllReviews} from '../../store/review'
+import { useEffect } from 'react'
 
 const ReviewCard = ({review}) =>{
     const userId = useSelector((state) => state.session?.user?.id)
@@ -12,12 +14,12 @@ const ReviewCard = ({review}) =>{
         dispatch(deleteReview(reviewId))
     }
     
+
+    
     return(
         <div>
         <div className={'one_location'}>
-                <ul className="one_location_details">
-                    <li className="one_location_li">{review?.review}</li>
-                </ul>
+                <p>{review.review}</p>
             </div>
             <div>
             {review?.userId === userId ?
