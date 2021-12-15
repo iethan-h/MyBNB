@@ -12,6 +12,7 @@ import NewReview from '../reviews/newReview'
 import { Modal } from '../../context/Modal';
 import ReviewForm from '../reviews/newReview'
 import ReviewEdit from '../reviews/editReview'
+import './locationPage.css'
 
 function LoadLocation()  {
     const [showModal, setShowModal] = useState(false);
@@ -50,8 +51,8 @@ function LoadLocation()  {
                 <NavLink className='loggedInNav' to='/home'>Home</NavLink>
                 <NavLink className='loggedInNav' to='/locations'>Back to browse</NavLink>
             </div>
-            <div className="locationInfo">
-            <div className="locationImage">
+                <div className="locationInfo">
+                <div className="locationImage">
                         <img className="locationImg" src={location?.image} alt=""/>
                     </div>
                     <div className="locationAddress">
@@ -71,41 +72,34 @@ function LoadLocation()  {
                     </div>
                     <hr />
                     </div>
-                    <div className='options'>
+                    <div className='options'>    
+                        <button className='newStory' onClick={() => setShowModal(true)}>Write a new story</button>
+                            {showModal && (
+                                <Modal onClose={() => setShowModal(false)}>
+                                    <ReviewForm  setShowModal={setShowModal}  locationId={locationId}/>
+                                </Modal>
+                            )}
+                            <h2 className="reviewGreeting" >Read stories from visitors</h2>
+                                {location?.userId === userId ?
+                        <>
+                            {/* <EditMyLocation /> */}
+                            <button className="deleteLocation" type="button"  onClick={handleDelete}>Delete Location</button>            
+                        </>:
+                                null
+                        }  
+                        
+                    </div>      
+                    <div className='reviews'>
+                    <h2 >Read stories from visitors</h2>
+                        {reviews?.map((review) =>(
+                            <div className="reviewCards">
+                                <ReviewCard key={review?.id} review={review}/>
+                            </div>
+                        ))}
 
-            
-                       
-            
-                <button onClick={() => setShowModal(true)}>Write a new story</button>
-                    {showModal && (
-                        <Modal onClose={() => setShowModal(false)}>
-                            <ReviewForm  setShowModal={setShowModal}  locationId={locationId}/>
-                        </Modal>
-                    )}
-                    <h2>Read stories from visitors</h2>
-                        {location?.userId === userId ?
-                <>
-                    {/* <EditMyLocation /> */}
-                    <button className="deleteLocation" type="button"  onClick={handleDelete}>Delete Location</button>            
-                </>:
-                        null
-            }  
-            
-            </div>
-           
-            
-            
-                 
-         <div>
-            {reviews?.map((review) =>(
-                <div className="reviewCards">
-                    <ReviewCard key={review?.id} review={review}/>
-                </div>
-            ))}
-
-            {/* <NewReview locationId={locationId}/> */}
-        </div>
-        </div>
+                            {/* <NewReview locationId={locationId}/> */}
+                    </div>
+                    </div>
 
     )
 }
