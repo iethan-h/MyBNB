@@ -65,7 +65,7 @@ export const getReview = (reviewId) => async (dispatch) => {
     dispatch(getOneReview(oneReview))
 }
 
-export const editReview = (review, reviewId) => async (dispatch) => {
+export const editReview = (reviewId,review) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${reviewId}`, {
         method: 'PUT',
         headers: {
@@ -77,7 +77,7 @@ export const editReview = (review, reviewId) => async (dispatch) => {
       if (response.ok) {
         const data = await response.json();
         dispatch(editAReview(data));
-        return data;
+        return data
       }
 }
 

@@ -35,7 +35,7 @@ def review(id):
     review = Review.query.get(id)
     return review.to_dict()
     
-@review_routes.route('/<int:id>', methods=['PATCH'])
+@review_routes.route('/<int:id>', methods=['PUT'])
 def editReview(id):
     form = ReviewForm()
     if form.validate_on_submit():

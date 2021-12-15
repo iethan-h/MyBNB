@@ -5,20 +5,22 @@ import {editReview} from '../../store/review'
 
 
 
-const ReviewEdit = ({setShowModal,reviewId}) =>{
-    // const userId = useSelector((state) => state.session?.user?.id);
+const ReviewEdit = ({reviewId}) =>{
+    const userId = useSelector((state) => state.session?.user?.id);
     const dispatch = useDispatch();
     const [review, setReview] = useState('')  
-        const handleEdit = async (e) => {
-        e.preventDefault();
+    
+    
+    const handleEdit = async (e) => {
+    e.preventDefault();
 
-        const payload ={
-            // userId,
-            // review,
-            reviewId
+    const payload ={
+        userId,
+        review,
+        reviewId
         }
-         await dispatch(
-            editReview(payload)
+        await dispatch(
+        editReview(payload)
         )
     }
     
@@ -26,7 +28,7 @@ const ReviewEdit = ({setShowModal,reviewId}) =>{
         <div>
             <form>
                 <fieldset>
-                    <legend>Write a new review</legend>
+                    <legend>Change your review</legend>
                         <div>
                             <textarea
                              type="text" 
