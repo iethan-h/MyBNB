@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
 from app.models import db, Review
-from app.forms.review_form import review_exists,ReviewForm
+from app.forms.review_form import review_exists,ReviewForm,EditReviewForm
 
 
 review_routes = Blueprint('reviews', __name__)
@@ -37,12 +37,16 @@ def review(id):
     
 @review_routes.route('/<int:id>', methods=['PUT'])
 def editReview(id):
-    form = ReviewForm()
+    print('this is the ID',id)
+    form = EditReviewForm()
+    print("THis is the form",form)
     if form.validate_on_submit():
         review_edit= Review.query.get(id)
+        print("This is the review edit",review_edit)
         review_edit.review = form.data["review"]
         db.session.commit()
-        return review.to_dict()
+        print("TESTINGGGGGG")
+        return review_edit.to_dict()
     else:
         return form.errors
         
