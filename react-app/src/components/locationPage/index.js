@@ -79,7 +79,9 @@ function LoadLocation()  {
                                     <ReviewForm  setShowModal={setShowModal}  locationId={locationId}/>
                                 </Modal>
                             )}
-                            <h2 className="reviewGreeting" >Read stories from visitors</h2>
+                            <div className='userStories'>
+                                <h2 className="reviewGreeting" >Read stories from visitors</h2>
+                            </div>
                                 {location?.userId === userId ?
                         <>
                             {/* <EditMyLocation /> */}
@@ -90,7 +92,6 @@ function LoadLocation()  {
                         
                     </div>      
                     <div className='reviews'>
-                    <h2 >Read stories from visitors</h2>
                         {reviews?.map((review) =>(
                             <div className="reviewCards">
                                 <ReviewCard key={review?.id} review={review}/>
