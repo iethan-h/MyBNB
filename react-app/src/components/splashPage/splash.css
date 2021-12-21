@@ -5,12 +5,14 @@ body{
 
 .name{
   display: flex;
-  flex-direction: column;
   justify-content: center;
   text-align: center;
   padding-top:30px;
+  font-size: 35px;
+  margin: auto;
 }
 .img1{
+  margin: auto;
     height:50%;
     width:25%;
     border-radius:15px;
@@ -25,7 +27,6 @@ body{
 .img2{
   float:right;
   margin-right:50px;
-  margin-top: 50px;
   height:50%;
   width:25%;
   border-radius:15px;
