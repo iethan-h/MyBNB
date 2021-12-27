@@ -62,8 +62,9 @@ export const AllLocations = () => async(dispatch)=> {
 
 export const getSingleLocation = (locationId) => async (dispatch) => {
     const res = await fetch(`/api/locations/${locationId}`)
-    const oneLocation= await res.json();
-    dispatch(getALocation(oneLocation))
+    console.log("This is the response",res);
+    // const oneLocation = await res.json();
+    // dispatch(getALocation(oneLocation))
 }
 
 export const editOneLocation = (payload, locationId) => async (dispatch) => {

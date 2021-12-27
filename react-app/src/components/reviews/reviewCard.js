@@ -1,13 +1,12 @@
 import { useDispatch,useSelector} from "react-redux";
-import { useParams } from 'react-router'
 import {deleteReview, editReview} from '../../store/review'
 import { Modal } from '../../context/Modal';
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import ReviewEdit from './editReview'
 import './reviews.css'
 
 
-const ReviewCard = ({review}) =>{
+const ReviewCard = ({review,locationId}) =>{
     const [showModal, setShowModal] = useState(false);
     const userId = useSelector((state) => state.session?.user?.id)
     const dispatch = useDispatch();
@@ -32,7 +31,7 @@ const ReviewCard = ({review}) =>{
                     <button onClick={() => setShowModal(true)}>Edit Review</button>
                         {showModal && (
                             <Modal onClose={() => setShowModal(false)}>
-                                <ReviewEdit setShowModal={setShowModal} reviewId={review.id}/>
+                                <ReviewEdit setShowModal={setShowModal} reviewId={review.id} locationId={locationId}/>
                             </Modal>
                         )}
                 </div>

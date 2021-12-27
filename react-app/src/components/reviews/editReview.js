@@ -5,7 +5,7 @@ import {editReview} from '../../store/review'
 
 
 
-const ReviewEdit = ({reviewId}) =>{
+const ReviewEdit = ({reviewId,locationId}) =>{
     const userId = useSelector((state) => state.session?.user?.id);
     const dispatch = useDispatch();
     const [review, setReview] = useState('')  
@@ -17,10 +17,10 @@ const ReviewEdit = ({reviewId}) =>{
     const payload ={
         userId,
         review,
-        reviewId
+        locationId
         }
         await dispatch(
-        editReview(payload)
+        editReview(payload,reviewId)
         )
     }
     

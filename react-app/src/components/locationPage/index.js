@@ -1,14 +1,13 @@
+/* eslint-disable no-unused-vars */
 import {NavLink} from 'react-router-dom'
 import { useEffect,useState} from 'react'
 import {useDispatch}from 'react-redux'
 import {useSelector} from 'react-redux'
-import {getSingleLocation, deleteLocation} from '../../store/location'
+import {getSingleLocation, deleteLocation,AllLocations} from '../../store/location'
 import { useParams } from 'react-router'
 import { useHistory } from 'react-router-dom'
-// import EditMyLocation from '../editLocation'
 import ReviewCard from '../reviews/reviewCard'
 import {AllReviews} from '../../store/review'
-import NewReview from '../reviews/newReview'
 import { Modal } from '../../context/Modal';
 import ReviewForm from '../reviews/newReview'
 import ReviewEdit from '../reviews/editReview'
@@ -21,15 +20,12 @@ function LoadLocation()  {
     const {locationId} = useParams()
     const userId = useSelector((state) => state.session?.user?.id)
     const locationOne = useSelector(state => state.location)
-    
     const location = locationOne[locationId]
-    useEffect(()=>{
-        dispatch(getSingleLocation(locationId))
-    },[dispatch, locationId])
     
-    useEffect((id) => {
-        dispatch(getSingleLocation(id))
-    }, [dispatch])
+    
+    useEffect(()=>{
+        dispatch(AllLocations(locationId))
+    },[dispatch, locationId])
     
     const handleDelete = async (e) => {
         e.preventDefault()
@@ -70,7 +66,13 @@ function LoadLocation()  {
                     <div className="locationPrice">
                         <p className="one_location_li">${location?.price} per night</p>
                     </div>
-                    <hr />
+                    {location?.userId === userId ?
+                        <>
+                            <button className="deleteLocation" type="button"  onClick={handleDelete}>Delete Location</button>            
+                        </>:
+                                null
+                        }  
+                        <hr />
                     </div>
                     <div className='options'>    
                         <button className='newStory' onClick={() => setShowModal(true)}>Write a new story</button>
@@ -81,25 +83,15 @@ function LoadLocation()  {
                             )}
                             <div className='userStories'>
                                 <h2 className="reviewGreeting" >Read stories from visitors</h2>
-                            </div>
-                                {location?.userId === userId ?
-                        <>
-                            {/* <EditMyLocation /> */}
-                            <button className="deleteLocation" type="button"  onClick={handleDelete}>Delete Location</button>            
-                        </>:
-                                null
-                        }  
-                        
+                            </div>           
                     </div>      
-                    <div className='reviews'>
-                        {reviews?.map((review) =>(
-                            <div className="reviewCards">
-                                <ReviewCard key={review?.id} review={review}/>
-                            </div>
-                        ))}
-
-                            {/* <NewReview locationId={locationId}/> */}
-                    </div>
+                        <div className='reviews'>
+                            {reviews?.map((review) =>(
+                                <div className="reviewCards">
+                                    <ReviewCard key={review?.id} review={review} locationId={locationId}/>
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
     )

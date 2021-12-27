@@ -37,15 +37,12 @@ def review(id):
     
 @review_routes.route('/<int:id>', methods=['PUT'])
 def editReview(id):
-    print('this is the ID',id)
-    form = EditReviewForm()
-    print("THis is the form",form)
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         review_edit= Review.query.get(id)
-        print("This is the review edit",review_edit)
         review_edit.review = form.data["review"]
         db.session.commit()
-        print("TESTINGGGGGG")
         return review_edit.to_dict()
     else:
         return form.errors

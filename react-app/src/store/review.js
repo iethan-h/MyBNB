@@ -65,17 +65,17 @@ export const getReview = (reviewId) => async (dispatch) => {
     dispatch(getOneReview(oneReview))
 }
 
-export const editReview = (reviewId,review) => async (dispatch) => {
-    const response = await fetch(`/api/reviews/${reviewId.reviewId}`, {
+export const editReview = (review,reviewId) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${reviewId}`, {
         
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(reviewId.review),
+        body: JSON.stringify(review),
       });
-        console.log(JSON.stringify(reviewId.review))
-        console.log("This is the review ID", reviewId.review)
+        console.log("This is the updated review",review)
+        console.log("This is the review ID",reviewId)
       if (response.ok) {
         const data = await response.json();
         dispatch(editAReview(data));
