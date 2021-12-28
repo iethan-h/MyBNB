@@ -5,6 +5,7 @@ import {newReview} from '../../store/review'
 
 
 
+
 const ReviewForm = ({setShowModal,locationId}) =>{
     const userId = useSelector((state) => state.session?.user?.id);
     // const locationId = useSelector(state => Object.key(state.location));
@@ -25,6 +26,7 @@ const ReviewForm = ({setShowModal,locationId}) =>{
          await dispatch(
             newReview(payload)
         )
+        
     }
     
     return (

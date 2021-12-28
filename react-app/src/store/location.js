@@ -62,21 +62,22 @@ export const AllLocations = () => async(dispatch)=> {
 
 export const getSingleLocation = (locationId) => async (dispatch) => {
     const res = await fetch(`/api/locations/${locationId}`)
-    console.log("This is the response",res);
-    // const oneLocation = await res.json();
-    // dispatch(getALocation(oneLocation))
+    const oneLocation = await res.json();
+    dispatch(getALocation(oneLocation))
 }
 
 export const editOneLocation = (payload, locationId) => async (dispatch) => {
     const res = await fetch(`/api/locations/${locationId}`, {
-        method: 'PATCH',
-        headers: {"Content-Type": "application/json"},
+        method: 'PUT',
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify(payload)
     })
     if(res.ok) {
-        const review = await res.json()
-        dispatch(editALocation(review))
-        return review
+        const data = await res.json();
+        dispatch(editALocation(data));
+        return data
     }
 }
 
