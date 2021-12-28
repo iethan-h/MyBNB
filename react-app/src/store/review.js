@@ -67,15 +67,12 @@ export const getReview = (reviewId) => async (dispatch) => {
 
 export const editReview = (review,reviewId) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${reviewId}`, {
-        
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(review),
       });
-        console.log("This is the updated review",review)
-        console.log("This is the review ID",reviewId)
       if (response.ok) {
         const data = await response.json();
         dispatch(editAReview(data));
@@ -103,6 +100,7 @@ const ReviewsReducer = (state = {}, action) =>{
             
             
         case ADD_REVIEW:
+            console.log("This is the action",action)
             return {
                 ...state,
                 [action.review?.id]: action.review

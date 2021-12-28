@@ -31,7 +31,7 @@ def location(id):
     location = Location.query.get(id)
     return location.to_dict()
     
-@location_routes.route('/<int:id>', methods=['PATCH'])
+@location_routes.route('/<int:id>', methods=['PUT'])
 def editLocation(id):
     form = EditLocationForm()
     if form.validate_on_submit():
