@@ -9,9 +9,7 @@ import { authenticate } from './store/session';
 import Home from './components/homePage'
 import Splash from './components/splashPage'
 import LocationFeed from './components/locations'
-import MyLocations from './components/myLocations'
 import LoadLocation from './components/locationPage'
-import NewReview from './components/reviews'
 import UpdateLocation from './components/editLocation'
 import Footer from './components/footer'
 
@@ -58,10 +56,6 @@ function App() {
         
         <Route path='/locations/:locationId' exact={true}>
           <LoadLocation />
-        </Route>
-        
-        <Route path='/locations/:userId' exact={true}>
-          <MyLocations />
         </Route>
         
         <Route path='/locations/:locationId' exact={true}>

@@ -21,6 +21,7 @@ function LoadLocation()  {
     const userId = useSelector((state) => state.session?.user?.id)
     const locationOne = useSelector(state => state.location)
     const location = locationOne[locationId]
+    console.log("This is the location", location?.review_id);
     
     
     useEffect(()=>{
@@ -40,6 +41,17 @@ function LoadLocation()  {
     useEffect(()=>{
         dispatch(AllReviews(reviewId))
     },[dispatch,reviewId])
+    
+    let reviewCards;
+    if (reviews){
+        reviewCards = Object.values(reviews).map((review) => {
+            if (location?.review_id?.includes(review.id)) {
+                return <ReviewCard key={review.id} review={review} />
+            }
+            return reviewCards
+        })
+        .reverse()
+    }
  
     return(
         <div>
@@ -83,14 +95,17 @@ function LoadLocation()  {
                             )}
                             <div className='userStories'>
                                 <h2 className="reviewGreeting" >Read stories from visitors</h2>
-                            </div>           
+                            </div>
+           
                     </div>      
                         <div className='reviews'>
-                            {reviews?.map((review) =>(
+                            
+                            {reviewCards}
+                            {/* {reviews?.map((review) =>(
                                 <div className="reviewCards">
                                     <ReviewCard key={review?.id} review={review} locationId={locationId}/>
                                 </div>
-                            ))}
+                            ))} */}
                         </div>
                     </div>
 
