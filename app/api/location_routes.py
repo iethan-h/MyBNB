@@ -33,17 +33,12 @@ def location(id):
     
 @location_routes.route('/<int:id>', methods=['PUT'])
 def editLocation(id):
+    locations = Location.query.get(id)
     form = EditLocationForm()
+    print("This is the form data",form.data)
     if form.validate_on_submit():
-        
-        locations = Location.query.get(id)
-        locations.address = form.data['address']
-        locations.city = form.data['city']
-        locations.state = form.data['state']
-        locations.country = form.data['country']
-        locations.price = form.data['price']
-        locations.image = form.data['image']
-            
+        print("FORM GOOD!!!!!!!!!!!!")      
+        locations.price = form.data['price']          
         db.session.commit()
         return locations.to_dict()
     else:

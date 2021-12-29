@@ -22,6 +22,7 @@ const ReviewEdit = ({reviewId,locationId}) =>{
         await dispatch(
         editReview(payload,reviewId)
         )
+        console.log("This is the payload",payload);
     }
     
     return (

@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom'
 import { useEffect,useState} from 'react'
 import {useDispatch}from 'react-redux'
 import {useSelector} from 'react-redux'
-import {getSingleLocation, deleteLocation,AllLocations} from '../../store/location'
+import {editOneLocation, deleteLocation,AllLocations} from '../../store/location'
 import { useParams } from 'react-router'
 import { useHistory } from 'react-router-dom'
 import ReviewCard from '../reviews/reviewCard'
@@ -12,6 +12,7 @@ import { Modal } from '../../context/Modal';
 import ReviewForm from '../reviews/newReview'
 import ReviewEdit from '../reviews/editReview'
 import './locationPage.css'
+import UpdateLocation from '../editLocation'
 
 function LoadLocation()  {
     const [showModal, setShowModal] = useState(false);
@@ -79,9 +80,17 @@ function LoadLocation()  {
                     <div className="locationPrice">
                         <p className="one_location_li">${location?.price} per night</p>
                     </div>
+                    
                     {location?.userId === userId ?
                         <>
-                            <button className="deleteLocation" type="button"  onClick={handleDelete}>Delete Location</button>            
+                            <div className="locationOptions">
+                                <div>
+                                    <button className="deleteLocation" type="button"  onClick={handleDelete}>Delete Location</button>
+                                </div>  
+                                <div>
+                                    <UpdateLocation locationId={location}/>
+                                </div>
+                            </div>          
                         </>:
                                 null
                         }  
@@ -103,12 +112,6 @@ function LoadLocation()  {
                             <div className='reviewCards'>
                                 {reviewCards}
                             </div>
-                            
-                            {/* {reviews?.map((review) =>(
-                                <div className="reviewCards">
-                                    <ReviewCard key={review?.id} review={review} locationId={locationId}/>
-                                </div>
-                            ))} */}
                         </div>
                     </div>
 
