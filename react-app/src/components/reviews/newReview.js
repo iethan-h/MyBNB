@@ -25,6 +25,7 @@ const ReviewForm = ({setShowModal,locationId}) =>{
          await dispatch(
             newReview(payload)
         )
+        window.location.reload(true);
     }
     
     return (

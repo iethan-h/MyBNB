@@ -52,7 +52,7 @@ function LoadLocation()  {
             }
             return reviewCards
         })
-        .reverse()
+        .reverse().slice()
     }
 
     return(
@@ -83,13 +83,9 @@ function LoadLocation()  {
                     
                     {location?.userId === userId ?
                         <>
-                            <div className="locationOptions">
-                                <div>
+                            <div className="locationOptions">                       
                                     <button className="deleteLocation" type="button"  onClick={handleDelete}>Delete Location</button>
-                                </div>  
-                                <div>
-                                    <UpdateLocation locationId={location}/>
-                                </div>
+                                    <UpdateLocation locationId={location}/>                              
                             </div>          
                         </>:
                                 null

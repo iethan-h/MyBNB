@@ -11,11 +11,7 @@
 .reviewOptions{
     padding:8px;
 }
-.options{
-    display:flex;
-    justify-content: space-between;
-    padding:10px;
-}
+
 .loggedInNav{
     color:black;
     padding:25px;
