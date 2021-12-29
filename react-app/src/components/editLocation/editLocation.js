@@ -1,47 +1,40 @@
 import React, { useState} from "react";
-import { useDispatch,useSelector} from "react-redux";
-import {newLocation,AllLocations} from '../../store/location'
+import { useDispatch} from "react-redux";
+import {editOneLocation} from '../../store/location'
 
 
-const NewHostForm = () => {
+const EditLocation = ({locationId, locationInfo}) => {
     const dispatch = useDispatch();
     const [price, setPrice] = useState('')
-    const userId = useSelector((state) => state.session?.user?.id);
-    const [image, setImage] = useState('')
+    //const userId = useSelector((state) => state.session?.user?.id);
+
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const payload ={
-            userId,
-            price,
+        const {address, city, state, image, country} = locationInfo
+        const payload = {
+            address, 
+            city, 
+            state,
+            country, 
             image,
-
+            price
         }
          dispatch(
-            newLocation(payload)
+            editOneLocation(payload,locationId)
         )
     }
-    
     return (
         <div>
             <form>
                 <fieldset>
-                    <legend>Edit your location</legend>
+                    <legend>Edit your location price</legend>
                         <div>
                             <input 
                             type="text" 
                             placeholder="Price per day"
                             value={price}
                             onChange={(e) => setPrice(e.target.value)}
-                            />                         
-                        </div>
-                        <div>
-                            <input 
-                            type="text" 
-                            placeholder="Image URL"
-                            value={image}
-                            onChange={(e) => setImage(e.target.value)}
                             />                         
                         </div>
                         <div>
@@ -53,4 +46,4 @@ const NewHostForm = () => {
     )
     
 }
-export default NewHostForm
+export default EditLocation
