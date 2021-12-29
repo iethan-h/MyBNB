@@ -11,6 +11,7 @@ Visit the live site here: https://mybnb-app.herokuapp.com/
 * React.js
 * Redux
 * SQLAlchemy
+* Flask
 * Python
 * CSS
 
