@@ -9,11 +9,19 @@ const ReviewEdit = ({reviewId,locationId,reviews}) =>{
     const userId = useSelector((state) => state.session?.user?.id);
     const dispatch = useDispatch();
     const [review, setReview] = useState(reviews.review)  
+    const [errors,setErrors] = useState([])
     
     
     const handleEdit = async (e) => {
     e.preventDefault();
-
+    let error = [];
+    if(review.length === 0 || review.length < 5){
+        error.push("Please enter a story that is 5 or more characters.")
+    }
+    if(error.length){
+        setErrors(error)
+        return
+    }
     const payload ={
         userId,
         review,
@@ -28,6 +36,9 @@ const ReviewEdit = ({reviewId,locationId,reviews}) =>{
     return (
         <div>
             <form>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
                 <fieldset>
                     <legend>Change your review</legend>
                         <div>

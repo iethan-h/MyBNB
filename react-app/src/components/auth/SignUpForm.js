@@ -21,6 +21,12 @@ const SignUpForm = () => {
         setErrors(data)
       }
     }
+    else{
+      return setErrors([
+        "Confirm Password field must be the same as the Password field",
+      ])
+    }
+
   };
 
   const updateUsername = (e) => {

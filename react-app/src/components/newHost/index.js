@@ -6,36 +6,48 @@ import NewHostForm from './newHostForm';
  
 function NewHost () {
     const [showModal, setShowModal] = useState(false);
-    const [showMenu, setShowMenu] = useState(false);
     
-    const closeMenu = () => {
-        setShowMenu(false);
-      };
+    // const closeMenu = () => {
+    //     setShowMenu(false);
+    //   };
       
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-    };
+    // const openMenu = () => {
+    //     if (showMenu) return;
+    //     setShowMenu(true);
+    // };
 
-    return (
-        <div>
-      <div>
-      </div>
-      <div>
+  //   return (
+  //       <div>
+  //     <div>
+  //     </div>
+  //     <div>
        
-          <button
-            onClick={() => setShowMenu(true)}>
-            Sign Up
-          </button>
+  //         <button
+  //           onClick={() => setShowMenu(true)}>
+  //           Sign Up
+  //         </button>
         
-        {showMenu && (
-          <Modal onClose={() => setShowMenu(false)}>
-            <NewHostForm />
-          </Modal>
-        )}
-      </div>
+  //       {showMenu && (
+  //         <Modal onClose={() => setShowMenu(false)}>
+  //           <NewHostForm />
+  //         </Modal>
+  //       )}
+  //     </div>
+  //   </div>
+  // );
+  
+  return(
+    <>
+    <div>
+        <button onClick={() => setShowModal(true)}>Write a new story</button>
+            {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                    <NewHostForm  setShowModal={setShowModal}/>
+                </Modal>
+            )}
     </div>
-  );
+</>
+)
 }
 
 export default NewHost

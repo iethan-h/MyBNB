@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import {useSelector} from 'react-redux'
 import { Modal } from '../../context/Modal';
 import ReviewForm from './newReview'
 
 
 const NewReview = () =>{
+    const reviews = useSelector(state => Object.values(state.location))
     const [showModal, setShowModal] = useState(false);
     
         return(
