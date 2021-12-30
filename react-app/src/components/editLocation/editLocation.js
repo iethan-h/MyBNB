@@ -5,8 +5,7 @@ import {editOneLocation} from '../../store/location'
 
 const EditLocation = ({locationId, locationInfo}) => {
     const dispatch = useDispatch();
-    const [price, setPrice] = useState('')
-    //const userId = useSelector((state) => state.session?.user?.id);
+    const [price, setPrice] = useState(locationInfo.price)
 
     
     const handleSubmit = async (e) => {
