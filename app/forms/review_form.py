@@ -11,5 +11,4 @@ class ReviewForm(FlaskForm):
     review = TextAreaField('review')
 
 class EditReviewForm(FlaskForm):
-    # locationId = HiddenField('locationId')
     review = TextAreaField('review')

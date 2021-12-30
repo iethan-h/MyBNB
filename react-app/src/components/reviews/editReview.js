@@ -5,10 +5,10 @@ import {editReview} from '../../store/review'
 
 
 
-const ReviewEdit = ({reviewId,locationId}) =>{
+const ReviewEdit = ({reviewId,locationId,reviews}) =>{
     const userId = useSelector((state) => state.session?.user?.id);
     const dispatch = useDispatch();
-    const [review, setReview] = useState('')  
+    const [review, setReview] = useState(reviews.review)  
     
     
     const handleEdit = async (e) => {
@@ -22,7 +22,7 @@ const ReviewEdit = ({reviewId,locationId}) =>{
         await dispatch(
         editReview(payload,reviewId)
         )
-        console.log("This is the payload",payload);
+        window.location.reload(true);
     }
     
     return (

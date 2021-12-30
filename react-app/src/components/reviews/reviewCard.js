@@ -31,7 +31,7 @@ const ReviewCard = ({review,locationId}) =>{
                     <button onClick={() => setShowModal(true)}>Edit Review</button>
                         {showModal && (
                             <Modal onClose={() => setShowModal(false)}>
-                                <ReviewEdit setShowModal={setShowModal} reviewId={review.id} locationId={locationId}/>
+                                <ReviewEdit setShowModal={setShowModal} reviewId={review.id} reviews={review} locationId={locationId}/>
                             </Modal>
                         )}
                 </div>

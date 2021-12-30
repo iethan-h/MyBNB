@@ -67,7 +67,6 @@ export const getSingleLocation = (locationId) => async (dispatch) => {
 }
 
 export const editOneLocation = (locationInfo, locationId) => async (dispatch) => {
-    
     const res = await fetch(`/api/locations/${locationId}`, {
         method: 'PUT',
         headers: {

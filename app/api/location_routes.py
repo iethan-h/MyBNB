@@ -35,9 +35,9 @@ def location(id):
 def editLocation(id):
     locations = Location.query.get(id)
     form = EditLocationForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     print("This is the form data",form.data)
-    if form.validate_on_submit():
-        print("FORM GOOD!!!!!!!!!!!!")      
+    if form.validate_on_submit():      
         locations.price = form.data['price']          
         db.session.commit()
         return locations.to_dict()
