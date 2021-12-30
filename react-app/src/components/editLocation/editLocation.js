@@ -6,10 +6,20 @@ import {editOneLocation} from '../../store/location'
 const EditLocation = ({locationId, locationInfo}) => {
     const dispatch = useDispatch();
     const [price, setPrice] = useState(locationInfo.price)
+    const [errors,setErrors]= useState([])
 
     
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const regex = /\d/;
+        let error = [];
+        if(regex.test(price) === false || price.length === 0 ){
+            error.push("Please enter a price for your hosting.")
+        }
+        if(error.length){
+            setErrors(error)
+            return
+        }
         const {address, city, state, image, country} = locationInfo
         const payload = {
             address, 
@@ -22,10 +32,14 @@ const EditLocation = ({locationId, locationInfo}) => {
          dispatch(
             editOneLocation(payload,locationId)
         )
+        window.location.reload(true);
     }
     return (
         <div>
             <form>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
                 <fieldset>
                     <legend>Edit your location price</legend>
                         <div>

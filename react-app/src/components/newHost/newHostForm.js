@@ -19,8 +19,34 @@ const NewHostForm = () => {
     const [image, setImage] = useState('')
     
     const handleSubmit = async (e) => {
+        const regex = /\d/;
         e.preventDefault();
-
+        let error = []
+        if(address.length > 250){
+            error.push("Address must be less than 250 characters.")
+        }
+        else if(address.length === 0 || address.length < 5){
+            error.push("Please enter an address that is 5 characters or more in length")
+        }
+        if(image.length > 250){
+            error.push("Image link must be less than 250 characters.")
+        }
+        if(image.length === 0 ){
+            error.push("Please enter an image link")
+        }
+        if(state.length < 2 || state.length > 3){
+            error.push("Enter the state initials")
+        }
+        if(country.length < 2 || country.length > 50){
+            error.push("Please enter your country or its initials")
+        }
+        if(regex.test(price) === false || price.length === 0){
+            error.push("Please enter a price for your hosting.")
+        }
+        if(error.length){
+            setErrors(error)
+            return
+        }
         const payload ={
             userId,
             address,
@@ -39,6 +65,11 @@ const NewHostForm = () => {
     return (
         <div>
             <form>
+                <div>
+            {errors.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+            </div>
                 <fieldset>
                     <legend>Host a location</legend>
 
