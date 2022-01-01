@@ -24,7 +24,18 @@
 .deleteLocation{
     color: red;
 }
-textarea{
-    width:300px;
-    height:200px;
+
+.formDiv{
+    display:flex;
+    justify-content:center;
+    margin:center;
+}
+
+.Form{
+    display:flex;
+    justify-content:center;
+    margin:center;
+}
+.submit{
+    margin:5px;
 }

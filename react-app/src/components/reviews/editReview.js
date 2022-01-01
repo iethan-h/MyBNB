@@ -35,8 +35,8 @@ const ReviewEdit = ({reviewId,locationId,reviews}) =>{
     }
     
     return (
-        <div>
-            <form>
+        <div className="formDiv">
+            <form className="Form">
             {errors.map((error, ind) => (
               <div className="errors" key={ind}>{error}</div>
             ))}

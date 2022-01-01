@@ -35,15 +35,18 @@ const ReviewForm = ({setShowModal,locationId}) =>{
     }
     
     return (
-        <div>
-            <form>
+        <div className="formDiv">
+            <form className="Form">
             <div>
             {errors.map((error, ind) => (
               <div className="errors" key={ind}>{error}</div>
             ))}
             </div>
-                <fieldset>
-                    <legend>Write a new story!</legend>
+           
+                <fieldset> 
+                    <div className="Form">
+                    <h2>Write a new story!</h2>
+                    </div>
                         <div>
                             <textarea
                              type="text" 
@@ -53,10 +56,11 @@ const ReviewForm = ({setShowModal,locationId}) =>{
                              />
                         </div>
                         
-                        <div>
-                            <button onClick={handleSubmit}>Submit</button>
+                        <div className="Form">
+                            <button className="submit" onClick={handleSubmit}>Submit</button>
                         </div>
                 </fieldset>
+                
             </form>   
         </div>
     )

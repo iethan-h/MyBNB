@@ -14,11 +14,11 @@ const NavBar = () => {
   return (
     <div className='nav'>
       <ul className='nav_options'>
-        <li>
+        {/* <li>
           <a className='options' href='/' exact={true} activeClassName='active'>
             Home
           </a>
-        </li>
+        </li> */}
         <li>
           <a className='options' href='/login' exact={true} activeClassName='active'>
             Login
