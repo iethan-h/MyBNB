@@ -38,7 +38,7 @@ const EditLocation = ({locationId, locationInfo}) => {
         <div>
             <form>
             {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+              <div className="errors" key={ind}>{error}</div>
             ))}
                 <fieldset>
                     <legend>Edit your location price</legend>

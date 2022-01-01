@@ -1,6 +1,16 @@
 import React from 'react';
+import { login } from '../store/session';
+import { useSelector, useDispatch } from 'react-redux';
 
 const NavBar = () => {
+  const dispatch = useDispatch();
+  const demoLogin = (e) => {
+    e.preventDefault();
+    const email = "demo@aa.io";
+    const password = "password";
+    dispatch(login(email, password));
+};
+
   return (
     <div className='nav'>
       <ul className='nav_options'>
