@@ -35,8 +35,8 @@ const EditLocation = ({locationId, locationInfo}) => {
         window.location.reload(true);
     }
     return (
-        <div>
-            <form>
+        <div className="formDiv">
+            <form className="Form">
             {errors.map((error, ind) => (
               <div className="errors" key={ind}>{error}</div>
             ))}

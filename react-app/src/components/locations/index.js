@@ -16,7 +16,7 @@ function LocationFeed()  {
     },[dispatch])
     
     return(
-        <div className='locationContainer'>
+        <>
             <div>
                 <NavLink className="loggedInNav" to='/home'>Home</NavLink>
             </div>
@@ -26,12 +26,12 @@ function LocationFeed()  {
                 <hr/>
             <div className='feedWrapper'>
                 {locations?.map((location)=>(
-                    <div className='locationCards'>
+                    
                     <LocationCard key={location?.id} location={location}/> 
-                    </div>                  
+                                 
                 ))}
             </div>
-       </div>
+            </>
     )
 }
 export default LocationFeed

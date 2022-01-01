@@ -1,6 +1,7 @@
 import React, { useState} from "react";
 import { useDispatch,useSelector} from "react-redux";
 import {newReview} from '../../store/review'
+import './reviews.css'
 
 
 
@@ -30,9 +31,9 @@ const ReviewForm = ({setShowModal,locationId}) =>{
     }
     
     return (
-        <div>
-            <form>
-                <fieldset>
+        <div className="formDiv">
+            <form className="Form">
+                <fieldset className="formDiv">
                     <legend>Write a new review</legend>
                         <div>
                             <textarea
@@ -43,7 +44,7 @@ const ReviewForm = ({setShowModal,locationId}) =>{
                              />
                         </div>
                         
-                        <div>
+                        <div className="submit_btn">
                             <button onClick={handleSubmit}>Submit</button>
                         </div>
                 </fieldset>

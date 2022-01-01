@@ -71,8 +71,8 @@ const NewHostForm = ({setShowModal}) => {
     }
     
     return (
-        <div>
-            <form>
+        <div className="formDiv">
+            <form className="Form">
                 <div>
             {errors.map((error, ind) => (
               <div className="errors" key={ind}>{error}</div>

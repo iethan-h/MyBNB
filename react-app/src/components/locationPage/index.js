@@ -21,8 +21,7 @@ function LoadLocation()  {
     const userId = useSelector((state) => state.session?.user?.id)
     const locationOne = useSelector(state => state.location)
     const location = locationOne[locationId]
-    
-    
+
     useEffect(()=>{
         dispatch(AllLocations(locationId))
     },[dispatch, locationId])
