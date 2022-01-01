@@ -13,16 +13,16 @@ import './homepage.css'
 const Home = () =>{
     const [showModal, setShowModal] = useState(false);
     const userId=useSelector((state)=>state?.session?.user?.id)
-    const [showMenu, setShowMenu] = useState(false);
+    // const [showMenu, setShowMenu] = useState(false);
     
-    const closeMenu = () => {
-        setShowMenu(false);
-      };
+    // const closeMenu = () => {
+    //     setShowMenu(false);
+    //   };
       
-    const openMenu = () => {
-        if (showMenu) return;
-        setShowMenu(true);
-    };
+    // const openMenu = () => {
+    //     if (showMenu) return;
+    //     setShowMenu(true);
+    // };
     return(
         <> 
         <div className='logged_in_nav'>
@@ -34,9 +34,11 @@ const Home = () =>{
                 <LogoutButton />
             </div>
             <div>
-            <button onClick={showMenu === false ? openMenu : closeMenu}>Be a Host</button>
-            {showMenu && (    
-                <NewHostForm/>         
+            <button onClick={() => setShowModal(true)}>Be a host</button>
+            {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                    <NewHostForm  setShowModal={setShowModal}/>
+                </Modal>
             )}
             </div>
         </div>
