@@ -79,8 +79,8 @@ if (user) {
             <button className='submit_signup' type='submit'>Log in</button>
             </div>
         </form>
-        <div className='demoUser'>
-          <button onClick={demoLogin}>Demo User</button>
+        <div className='submit_btn'>
+          <button className="submit_signup" onClick={demoLogin}>Demo User</button>
         </div>
         </div>
     </div>

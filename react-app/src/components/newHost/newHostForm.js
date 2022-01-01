@@ -20,6 +20,7 @@ const NewHostForm = ({setShowModal}) => {
     
     const handleSubmit = async (e) => {
         const regex = /\d/;
+        const urlTest = /\.(jpeg|jpg|gif|png)$/;
         e.preventDefault();
         let error = []
         if(address.length > 250){
@@ -36,6 +37,9 @@ const NewHostForm = ({setShowModal}) => {
         }
         if(image.length === 0 ){
             error.push("Please enter an image link")
+        }
+        if(urlTest.test(image) === false){
+            error.push("Please enter a valid url")
         }
         if(state.length < 2 || state.length > 3){
             error.push("Enter the state initials")
@@ -71,7 +75,7 @@ const NewHostForm = ({setShowModal}) => {
             <form>
                 <div>
             {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+              <div className="errors" key={ind}>{error}</div>
             ))}
             </div>
                 <fieldset>

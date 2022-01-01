@@ -1,6 +1,7 @@
 import React, { useState} from "react";
 import { useDispatch,useSelector} from "react-redux";
 import {editReview} from '../../store/review'
+import './reviews.css'
 
 
 
@@ -37,12 +38,13 @@ const ReviewEdit = ({reviewId,locationId,reviews}) =>{
         <div>
             <form>
             {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
+              <div className="errors" key={ind}>{error}</div>
             ))}
                 <fieldset>
                     <legend>Change your review</legend>
                         <div>
                             <textarea
+                             className="reviewField"
                              type="text" 
                              placeholder="Type here..." 
                              value={review}
