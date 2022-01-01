@@ -6,7 +6,7 @@ import {useFormik} from 'formik'
 import * as yup from 'yup';
 
 
-const NewHostForm = () => {
+const NewHostForm = ({setShowModal}) => {
 
     const dispatch = useDispatch();
     const [errors, setErrors] = useState([])
@@ -27,6 +27,9 @@ const NewHostForm = () => {
         }
         else if(address.length === 0 || address.length < 5){
             error.push("Please enter an address that is 5 characters or more in length")
+        }
+        if(city.length === 0){
+            error.push("Please enter a city")
         }
         if(image.length > 250){
             error.push("Image link must be less than 250 characters.")
@@ -60,6 +63,7 @@ const NewHostForm = () => {
          dispatch(
             newLocation(payload)
         )
+        setShowModal(false)
     }
     
     return (

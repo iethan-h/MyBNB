@@ -43,9 +43,7 @@ function LoadLocation()  {
     
     let reviewCards;
     if (reviews){
-        console.log('These are the reviews',reviews)
         reviewCards = Object.values(reviews).map((review) => {
-            console.log('this is the location',location)
             if (location?.review_id?.includes(review.id)) {
                 return <ReviewCard key={review?.id} review={review} locationId={locationId} />
             }
