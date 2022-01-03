@@ -63,10 +63,13 @@ const NewHostForm = ({setShowModal}) => {
             image,
 
         }
-         dispatch(
+        let data = dispatch(
             newLocation(payload)
         )
-        setShowModal(false)
+        if(data){
+            setErrors([data])
+        }
+            setShowModal(false)
     }
     
     return (
