@@ -1,9 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useState} from "react";
 import { useDispatch,useSelector} from "react-redux";
-import {newLocation,AllLocations} from '../../store/location'
-import {useFormik} from 'formik'
-import * as yup from 'yup';
+import {newLocation} from '../../store/location'
+import './newHost.css'
 
 
 const NewHostForm = ({setShowModal}) => {
@@ -71,17 +70,18 @@ const NewHostForm = ({setShowModal}) => {
     }
     
     return (
-        <div className="formDiv">
-            <form className="Form">
+        <div>
+            <form className='forms'>
                 <div>
             {errors.map((error, ind) => (
               <div className="errors" key={ind}>{error}</div>
             ))}
             </div>
                 <fieldset>
-                    <legend>Host a location</legend>
-
-                        <div>
+                    <div className="forms">
+                        <legend>Host a new location</legend>
+                    </div>
+                        <div className="data">
                             <input
                              type="text" 
                              placeholder="Address" 
@@ -89,7 +89,7 @@ const NewHostForm = ({setShowModal}) => {
                              onChange={(e) => setAddress(e.target.value)}
                              />
                         </div>
-                        <div>
+                        <div className="data">
                             <input 
                             type="text" 
                             placeholder="City"
@@ -97,7 +97,7 @@ const NewHostForm = ({setShowModal}) => {
                             onChange={(e) => setCity(e.target.value)}
                             />                           
                         </div>
-                        <div>
+                        <div className="data">
                             <input 
                             type="text" 
                             placeholder="State"
@@ -105,7 +105,7 @@ const NewHostForm = ({setShowModal}) => {
                             onChange={(e) => setState(e.target.value)}
                             />                 
                         </div>
-                        <div>
+                        <div className="data">
                             <input 
                             type="text" 
                             placeholder="Country"
@@ -113,7 +113,7 @@ const NewHostForm = ({setShowModal}) => {
                             onChange={(e) => setCountry(e.target.value)}
                             />                       
                         </div>
-                        <div>
+                        <div className="data">
                             <input 
                             type="text" 
                             placeholder="Price per day"
@@ -121,7 +121,7 @@ const NewHostForm = ({setShowModal}) => {
                             onChange={(e) => setPrice(e.target.value)}
                             />                         
                         </div>
-                        <div>
+                        <div className="data">
                             <input 
                             type="text" 
                             placeholder="Image URL"
@@ -129,8 +129,8 @@ const NewHostForm = ({setShowModal}) => {
                             onChange={(e) => setImage(e.target.value)}
                             />                         
                         </div>
-                        <div>
-                            <button onClick={handleSubmit}>Submit</button>
+                        <div className="forms">
+                            <button className="submit" onClick={handleSubmit}>Submit</button>
                         </div>
                 </fieldset>
             </form>   
