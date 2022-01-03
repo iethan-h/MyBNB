@@ -30,41 +30,42 @@ function App() {
 
   return (
     <BrowserRouter>
-    
+    <div>
       <Switch>
         
-        <Route path='/' exact={true}>
-          <NavBar />
-          <Splash />          
-        </Route>
+          <Route path='/' exact={true}>
+            <NavBar />
+            <Splash />          
+          </Route>
+          
+          <Route path='/login' exact={true}>
+            <LoginForm />
+          </Route>
+          
+          <Route path='/sign-up' exact={true}>
+            <SignUpForm />
+          </Route>
+          
+          <ProtectedRoute path='/home' exact={true} >
+            <Home />
+          </ProtectedRoute>
+          
+          <Route path='/locations' exact={true}>
+            <LocationFeed />
+          </Route>
+          
+          <Route path='/locations/:locationId' exact={true}>
+            <LoadLocation />
+          </Route>
+          
+          <Route path='/locations/:locationId' exact={true}>
+            <UpdateLocation />
+          </Route>
         
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        
-        <ProtectedRoute path='/home' exact={true} >
-          <Home />
-        </ProtectedRoute>
-        
-        <Route path='/locations' exact={true}>
-          <LocationFeed />
-        </Route>
-        
-        <Route path='/locations/:locationId' exact={true}>
-          <LoadLocation />
-        </Route>
-        
-        <Route path='/locations/:locationId' exact={true}>
-          <UpdateLocation />
-        </Route>
-      
-      </Switch>
-      
+        </Switch>
+      </div>
        <Footer/>
+       
     </BrowserRouter>
    
   );

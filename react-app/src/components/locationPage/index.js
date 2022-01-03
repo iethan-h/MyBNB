@@ -12,7 +12,7 @@ import { Modal } from '../../context/Modal';
 import ReviewForm from '../reviews/newReview'
 import './locationPage.css'
 import UpdateLocation from '../editLocation'
-import Footer from "../footer"
+
 
 function LoadLocation()  {
     const [showModal, setShowModal] = useState(false);
@@ -139,9 +139,6 @@ function LoadLocation()  {
                             <div className='reviewCards'>
                                 {reviewCards}
                             </div>
-                        </div>
-                        <div>
-                            <Footer/>
                         </div>
                     </div>
 
