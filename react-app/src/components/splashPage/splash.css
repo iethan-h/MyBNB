@@ -65,3 +65,6 @@ body{
 .image{
     padding-left:15%;  
 }
+.name {
+  font-family: 'Courier New', Courier, monospace;
+}

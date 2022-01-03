@@ -43,12 +43,17 @@ function LoadLocation()  {
     
 
     let alreadyReviewed = false;
+    console.log("already review",alreadyReviewed);
     let reviewCards;
     if (reviews){
-        reviewCards = Object.values(reviews).map((review) => {          
+        reviewCards = Object.values(reviews).map((review,idx) => {          
             if (location?.review_id?.includes(review.id)) {
                 return <ReviewCard key={review?.id} review={review} locationId={locationId} />
             }
+            if (!alreadyReviewed && reviews[idx].userId === user?.id) {
+                alreadyReviewed = true; 
+                console.log("HIT",alreadyReviewed);              
+              }
             return reviewCards
             
             
@@ -57,9 +62,7 @@ function LoadLocation()  {
     }
     
     
-    if (!alreadyReviewed && review?.user?.id === user?.id) {
-        alreadyReviewed = true;
-      }
+
 
 
     return(
@@ -101,7 +104,7 @@ function LoadLocation()  {
                     </div>
                     <div className='options'>
                         <div>
-                        {!alreadyReviewed && location?.userId !== user?.id && (
+                        {alreadyReviewed && location?.userId !== user?.id ? (
                             <div>
                                 <button className='newStory' onClick={() => setShowModal(true)}>Write a new story</button>
                                 {showModal && (
@@ -110,7 +113,8 @@ function LoadLocation()  {
                                     </Modal>
                                 )}
                             </div>
-                        )}
+                        ):null
+                        }
 
                         {location?.userId === user?.id && (
                             <>
