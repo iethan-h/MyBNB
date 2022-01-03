@@ -10,7 +10,7 @@ def location_exists(form, field):
         raise ValidationError('Location is already being hosted.')
 
 class LocationForm(FlaskForm):
-    address = StringField('address', validators=[DataRequired()])
+    address = StringField('address', validators=[DataRequired(),location_exists])
     city = StringField('city', validators=[DataRequired()])
     state = StringField('state', validators=[DataRequired()])
     country = StringField('country', validators=[DataRequired()])

@@ -7,7 +7,7 @@ class Location(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    address = db.Column(db.String(250), nullable=False)
+    address = db.Column(db.String(250), nullable=False, unique=True)
     city = db.Column(db.String(250), nullable=False)
     state = db.Column(db.String(250), nullable=False)
     country = db.Column(db.String(250), nullable=False)

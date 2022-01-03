@@ -48,9 +48,12 @@ export const newLocation = (payload) => async (dispatch) => {
           },
         body: JSON.stringify(payload)
     })
+    const location = await response.json()
     if (response.ok) {
-        const location = await response.json()
         dispatch(addOneLocation(location))
+    }
+    else{
+        return (location.errors)
     }
 }
 
