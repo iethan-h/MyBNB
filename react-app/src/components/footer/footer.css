@@ -1,8 +1,6 @@
 .footerDiv {
-    position: fixed; 
-    bottom: 0;
     width: 100%; 
-    /* background-color: #f8f8ff; */
+    background-color: #D3D3D3
     /* padding: 32px 0; */
 }
 
@@ -16,7 +14,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* background-color: #f8f8ff; */
+    background-color: #D3D3D3
 }
 
 .icons{

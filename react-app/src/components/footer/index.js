@@ -3,7 +3,7 @@ import "./footer.css";
 
 function Footer (){
   return (
-    <div className="footerDiv">
+    <footer className="footerDiv">
       <div className="socialMedia">
         <p className="social">Created by: Ethan Harwell</p>
         <a className="icons" target="_blank" href="https://github.com/iethan-h">
@@ -19,7 +19,7 @@ function Footer (){
           />
         </a>
       </div>
-    </div>
+    </footer>
   );
 };
 
