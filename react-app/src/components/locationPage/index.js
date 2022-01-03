@@ -18,9 +18,10 @@ function LoadLocation()  {
     const dispatch=useDispatch();
     const history = useHistory();
     const {locationId} = useParams()
-    const userId = useSelector((state) => state.session?.user?.id)
+    const user = useSelector((state) => state.session?.user)
     const locationOne = useSelector(state => state.location)
     const location = locationOne[locationId]
+    const review =  useSelector(state => state.review)
 
     useEffect(()=>{
         dispatch(AllLocations(locationId))
@@ -40,16 +41,26 @@ function LoadLocation()  {
         dispatch(AllReviews(reviewId))
     },[dispatch,reviewId])
     
+
+    let alreadyReviewed = false;
     let reviewCards;
     if (reviews){
-        reviewCards = Object.values(reviews).map((review) => {
+        reviewCards = Object.values(reviews).map((review) => {          
             if (location?.review_id?.includes(review.id)) {
                 return <ReviewCard key={review?.id} review={review} locationId={locationId} />
             }
             return reviewCards
+            
+            
         })
         .reverse().slice()
     }
+    
+    
+    if (!alreadyReviewed && review?.user?.id === user?.id) {
+        alreadyReviewed = true;
+      }
+
 
     return(
         <div>
@@ -77,7 +88,7 @@ function LoadLocation()  {
                         <p className="one_location_li">${location?.price} per night</p>
                     </div>
                     
-                    {location?.userId === userId ?
+                    {location?.userId === user?.id ?
                         <>
                             <div className="locationOptions">                       
                                     <button className="deleteLocation" type="button"  onClick={handleDelete}>Delete Location</button>
@@ -88,13 +99,26 @@ function LoadLocation()  {
                         }  
                         <hr />
                     </div>
-                    <div className='options'>    
-                        <button className='newStory' onClick={() => setShowModal(true)}>Write a new story</button>
-                            {showModal && (
-                                <Modal onClose={() => setShowModal(false)}>
-                                    <ReviewForm  setShowModal={setShowModal}  locationId={locationId}/>
-                                </Modal>
-                            )}
+                    <div className='options'>
+                        <div>
+                        {!alreadyReviewed && location?.userId !== user?.id && (
+                            <div>
+                                <button className='newStory' onClick={() => setShowModal(true)}>Write a new story</button>
+                                {showModal && (
+                                    <Modal onClose={() => setShowModal(false)}>
+                                        <ReviewForm  setShowModal={setShowModal}  locationId={locationId}/>
+                                    </Modal>
+                                )}
+                            </div>
+                        )}
+
+                        {location?.userId === user?.id && (
+                            <>
+                            
+                            </>
+                        )}
+
+                            </div>
                             <div className='userStories'>
                                 <h2 className="reviewGreeting" >Read stories from visitors</h2>
                             </div>
