@@ -26,9 +26,9 @@ const ReviewCard = ({review,locationId}) =>{
                 {review?.userId === userId ?
                 <>
                 <div className='userOptions'>
-                    <button type="button" onClick={handleDelete}>Delete review</button> 
+                    <button className="deleteReview" type="button" onClick={handleDelete}>Delete review</button> 
                         
-                    <button onClick={() => setShowModal(true)}>Edit Review</button>
+                    <button className="editReview" onClick={() => setShowModal(true)}>Edit Review</button>
                         {showModal && (
                             <Modal onClose={() => setShowModal(false)}>
                                 <ReviewEdit setShowModal={setShowModal} reviewId={review.id} reviews={review} locationId={locationId}/>

@@ -100,7 +100,6 @@ const ReviewsReducer = (state = {}, action) =>{
             
             
         case ADD_REVIEW:
-            console.log("This is the action",action)
             return {
                 ...state,
                 [action.review?.id]: action.review

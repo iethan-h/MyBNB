@@ -42,18 +42,16 @@ function LoadLocation()  {
     },[dispatch,reviewId])
     
 
-    let alreadyReviewed = false;
-    console.log("already review",alreadyReviewed);
+    // let alreadyReviewed = false;
     let reviewCards;
     if (reviews){
         reviewCards = Object.values(reviews).map((review,idx) => {          
             if (location?.review_id?.includes(review.id)) {
                 return <ReviewCard key={review?.id} review={review} locationId={locationId} />
             }
-            if (!alreadyReviewed && reviews[idx].userId === user?.id) {
-                alreadyReviewed = true; 
-                console.log("HIT",alreadyReviewed);              
-              }
+            // if (!alreadyReviewed && reviews[idx].userId === user?.id) {
+            //     alreadyReviewed = true;             
+            //   }
             return reviewCards
             
             
@@ -104,7 +102,7 @@ function LoadLocation()  {
                     </div>
                     <div className='options'>
                         <div>
-                        {alreadyReviewed && location?.userId !== user?.id ? (
+                        {/* {alreadyReviewed && location?.userId !== user?.id ? (
                             <div>
                                 <button className='newStory' onClick={() => setShowModal(true)}>Write a new story</button>
                                 {showModal && (
@@ -113,8 +111,16 @@ function LoadLocation()  {
                                     </Modal>
                                 )}
                             </div>
-                        ):null
-                        }
+                        ):null } */}
+                        
+                        <div>
+                                <button className='newStory' onClick={() => setShowModal(true)}>Write a new story</button>
+                                {showModal && (
+                                    <Modal onClose={() => setShowModal(false)}>
+                                        <ReviewForm  setShowModal={setShowModal}  locationId={locationId}/>
+                                    </Modal>
+                                )}
+                            </div>
 
                         {location?.userId === user?.id && (
                             <>

@@ -19,6 +19,9 @@ const ReviewForm = ({setShowModal,locationId}) =>{
         if(review.length === 0 || review.length < 5){
             error.push("Please enter a story that is 5 or more characters.")
         }
+        if(review.length > 100){
+            error.push("Please enter a story that is less than 100 characters.")
+        }
         if(error.length){
             setErrors(error)
             return

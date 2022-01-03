@@ -74,7 +74,6 @@ export const editOneLocation = (locationInfo, locationId) => async (dispatch) =>
         },
         body: JSON.stringify(locationInfo)
     })
-    console.log("this is the location ID",locationId);
     if(res.ok) {
         const data = await res.json();
         dispatch(editALocation(data));
