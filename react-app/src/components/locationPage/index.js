@@ -113,7 +113,17 @@ function LoadLocation()  {
                                 )}
                             </div>
                         ):null } */}
-                        
+                            {location?.userId === user?.id && (
+                            <>
+                            
+                            </>
+                        )}
+                        <div>
+                        {location?.userId === user?.id ? (
+                            <>
+                            
+                            </>
+                        ):
                         <div>
                                 <button className='newStory' onClick={() => setShowModal(true)}>Write a new story</button>
                                 {showModal && (
@@ -121,13 +131,11 @@ function LoadLocation()  {
                                         <ReviewForm  setShowModal={setShowModal}  locationId={locationId}/>
                                     </Modal>
                                 )}
-                            </div>
-
-                        {location?.userId === user?.id && (
-                            <>
+                                </div>
                             
-                            </>
-                        )}
+                                }
+</div>
+
 
                             </div>
                             <div className='userStories'>
