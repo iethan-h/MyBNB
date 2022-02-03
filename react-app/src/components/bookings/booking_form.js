@@ -28,6 +28,7 @@ function BookingForm({locationInfo}){
             endDate,
         }
         dispatch(newBooking(payload))
+        window.location.reload(true);
     }
     
     return(
