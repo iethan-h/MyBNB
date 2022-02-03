@@ -1,6 +1,6 @@
-import React, { useState} from "react";
+import React, {useEffect,useState} from "react";
 import { useDispatch,useSelector} from "react-redux";
-import {newReview} from '../../store/review'
+import {newReview, AllReviews} from '../../store/review'
 
 
 
@@ -10,7 +10,7 @@ const ReviewForm = ({setShowModal,locationId}) =>{
     const dispatch = useDispatch();
     const [review, setReview] = useState('')
     const [errors, setErrors] = useState([])
-    
+
 
         
         const handleSubmit = async (e) => {

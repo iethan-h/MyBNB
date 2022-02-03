@@ -12,6 +12,7 @@ import { Modal } from '../../context/Modal';
 import ReviewForm from '../reviews/newReview'
 import './locationPage.css'
 import UpdateLocation from '../editLocation'
+import BookingForm from '../bookings/booking_form'
 
 
 function LoadLocation()  {
@@ -23,7 +24,14 @@ function LoadLocation()  {
     const locationOne = useSelector(state => state.location)
     const location = locationOne[locationId]
     const review =  useSelector(state => state.review)
-
+    const [showCalendar, setShowCalendar] = useState(false)
+    const reviews = useSelector(state =>Object.values(state.review))
+    const { reviewId } = useParams();
+    
+    useEffect(()=>{
+        dispatch(AllReviews(reviewId))
+    },[dispatch,reviewId])
+    
     useEffect(()=>{
         dispatch(AllLocations(locationId))
     },[dispatch, locationId])
@@ -35,12 +43,7 @@ function LoadLocation()  {
         history.push('/home')
     }
     
-    const reviews = useSelector(state =>Object.values(state.review))
-    const { reviewId } = useParams();
-    
-    useEffect(()=>{
-        dispatch(AllReviews(reviewId))
-    },[dispatch,reviewId])
+
     
 
     // let alreadyReviewed = false;
@@ -60,6 +63,7 @@ function LoadLocation()  {
         .reverse().slice()
     }
     
+    //Disable already booked dates.
     
 
 
@@ -97,7 +101,7 @@ function LoadLocation()  {
                                     <UpdateLocation locationId={location}/>                              
                             </div>          
                         </>:
-                                null
+                                <BookingForm  locationId={location}/>
                         }  
                         <hr />
                     </div>

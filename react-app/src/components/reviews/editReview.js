@@ -34,7 +34,7 @@ const ReviewEdit = ({reviewId,locationId,reviews}) =>{
         await dispatch(
         editReview(payload,reviewId)
         )
-        window.location.reload(true);
+        // window.location.reload(true);
     }
     
     return (
