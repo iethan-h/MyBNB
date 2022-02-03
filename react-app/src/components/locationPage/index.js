@@ -25,7 +25,13 @@ function LoadLocation()  {
     const location = locationOne[locationId]
     const review =  useSelector(state => state.review)
     const [showCalendar, setShowCalendar] = useState(false)
-
+    const reviews = useSelector(state =>Object.values(state.review))
+    const { reviewId } = useParams();
+    
+    useEffect(()=>{
+        dispatch(AllReviews(reviewId))
+    },[dispatch,reviewId])
+    
     useEffect(()=>{
         dispatch(AllLocations(locationId))
     },[dispatch, locationId])
@@ -37,12 +43,7 @@ function LoadLocation()  {
         history.push('/home')
     }
     
-    const reviews = useSelector(state =>Object.values(state.review))
-    const { reviewId } = useParams();
-    
-    useEffect(()=>{
-        dispatch(AllReviews(reviewId))
-    },[dispatch,reviewId])
+
     
 
     // let alreadyReviewed = false;

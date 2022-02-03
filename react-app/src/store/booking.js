@@ -46,6 +46,7 @@ export const newBooking = (booking) => async (dispatch) => {
     })
     if (res.ok){
         const booking = await res.json()
+        console.log("__________________",booking)
         dispatch(addBooking(booking))
         return booking
     }

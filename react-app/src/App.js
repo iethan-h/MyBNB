@@ -12,6 +12,7 @@ import LocationFeed from './components/locations'
 import LoadLocation from './components/locationPage'
 import UpdateLocation from './components/editLocation'
 import Footer from './components/footer'
+import BookingPage from './components/userBookings/userBookings'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -61,6 +62,10 @@ function App() {
           <Route path='/locations/:locationId' exact={true}>
             <UpdateLocation />
           </Route>
+          
+          <Route path = '/bookings/:userId' exact={true}>
+            <BookingPage/>
+          </Route>  
         
         </Switch>
       </div>
