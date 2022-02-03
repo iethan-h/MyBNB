@@ -13,7 +13,7 @@ def all_bookings():
     return {booking.id: booking.to_doct() for booking in Booking.query.filter.all()} 
 
 @booking_routes.route('',methods=['POST'])
-# @login_required
+@login_required
 def new_booking():
     form = NewBooking()
     form['csrf_token'].data = request.cookies['csrf_token']
