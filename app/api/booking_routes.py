@@ -16,14 +16,11 @@ def all_bookings():
 # @login_required
 def new_booking():
     form = NewBooking()
-    print("-------------------------------OUTSIDE")
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print("-------------------------------INSIDE")
         booking = Booking(**request.json)
         db.session.add(booking)
         db.session.commit()
-        print("__________________",booking)
         return booking.to_dict()
     else:
         return form.errors
