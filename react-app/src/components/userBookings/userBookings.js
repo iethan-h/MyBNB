@@ -5,29 +5,18 @@ import LogoutButton from '../auth/LogoutButton'
 import LocationCard from '../locations/locationCard'
 import { useEffect, useState } from 'react';
 import BookingsContainer from './bookingsContainer'
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import {userWalks} from '../../store/booking'
 
-const BookingPage = ({locationId}) =>{
+const BookingPage = () =>{
+    const dispatch = useDispatch();
     const user = useSelector((state) => state.session?.user)
-   
-    const locationOne = useSelector(state => state.location)
-    const location = locationOne[locationId]
+    const myBookings = useSelector(state => Object.values(state.booking))
+    console.log('---------------',typeof myBookings)
+    
+    useEffect(()=>{
+        dispatch(userWalks(user?.id))
+    },[dispatch,user])
 
-    
-    
-    
-    const bookings = useSelector(state => state?.booking)
-    let bookingCards;
-    if(bookings){
-        bookingCards = Object.values(bookings).map((booking,idx) =>{
-            if(booking?.location?.id?.includes(user?.id)){
-                return <LocationCard key={location?.id} locationId={location.id}/>
-            }
-            return bookingCards
-        })
-        .reverse().slice()
-    }
     
     return(
         <>
@@ -37,7 +26,7 @@ const BookingPage = ({locationId}) =>{
             <LogoutButton/>
         </div>
         <div className = "bookings_body">
-            <BookingsContainer location={location}/>
+            <BookingsContainer/>
         </div>
         </>
     )

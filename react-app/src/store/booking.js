@@ -50,9 +50,9 @@ export const newBooking = (booking) => async (dispatch) => {
         return booking
     }
 }
-
-export const AllBookings = (bookings) => async(dispatch)=> {
-    const res = await fetch("/api/bookings")
+//GET ALL BOOKINGS FOR A SINGLE LOCATION
+export const locationBookings = (locationId) => async(dispatch)=> {
+    const res = await fetch(`/api/bookings/${locationId}/`)
     if (res.ok) {
         const bookings = await res.json()
         dispatch(getAllBookings(bookings))
@@ -65,6 +65,16 @@ export const getBooking = (bookingId) => async (dispatch) => {
     dispatch(getOneBooking(oneBooking))
 }
 
+//GET ALL BOOKINGS FOR A SINGLE USER
+export const userWalks = (userId) => async (dispatch) => {
+    const res =  await fetch(`/api/bookings/user/${userId}`)
+    if(res.ok){
+        const bookings = await res.json()
+        dispatch(getAllBookings(bookings))
+    }
+}
+
+//UPDATE A WALK
 export const editBooking = (booking,bookingId) => async (dispatch) => {
     const response = await fetch(`/api/bookings/${bookingId}`, {
         method: 'PUT',
