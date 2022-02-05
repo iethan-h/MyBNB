@@ -23,3 +23,14 @@ class Booking(db.Model):
             'startDate': self.startDate,
             'endDate': self.endDate,
         }
+        
+    def booking_info(self):
+        return {
+            'id':self.id,
+            'user_id':self.userId,
+            'location_id':self.locationId,
+            'locations':self.locations.booking_info(),
+            'start':self.startDate,
+            'end':self.endDate
+        }
+        

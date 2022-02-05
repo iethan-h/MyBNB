@@ -5,15 +5,15 @@ import { useParams } from 'react-router'
 import {newBooking} from '../../store/booking'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+
+
 function BookingForm({locationInfo}){
     const dispatch = useDispatch();
     const [showCalendar, setShowCalendar] = useState(false)
     const {locationId} = useParams();
-    const [value, onChange] = useState(null);
     const [startDate,setStartDate] = useState(new Date())
     const [endDate,setEndDate] = useState(startDate)
     const userId = useSelector((state) => state.session?.user?.id);
-    const [date, setDate] = useState(new Date());
     
     useEffect(()=>{
         console.log(startDate, endDate)
@@ -24,8 +24,8 @@ function BookingForm({locationInfo}){
         const payload = {
             userId,
             locationId,
-            startDate,
-            endDate,
+            startDate: startDate.toDateString(),
+            endDate:endDate.toDateString(),
         }
         dispatch(newBooking(payload))
         window.location.reload(true);
@@ -44,7 +44,6 @@ function BookingForm({locationInfo}){
                 setEndDate(endDate)
                 }
             }
-
                 />
                 </div>
                 <button type='submit' onClick={handleBooking}>Submit</button>

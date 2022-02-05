@@ -20,7 +20,7 @@ class Location(db.Model):
     #relationships
     user = db.relationship('User', back_populates='locations')
     reviews = db.relationship('Review', back_populates='locations', cascade="all, delete")
-    booking = db.relationship('Booking', back_populates='locations')
+    booking = db.relationship('Booking', back_populates='locations', cascade="all, delete")
     images = db.relationship('Image', back_populates='locations')
     
     def to_dict(self):
@@ -36,4 +36,16 @@ class Location(db.Model):
              'review_id':[reviews.id for reviews in self.reviews],
              'createdAt': self.createdAt,
              'updatedAt': self.updatedAt
+        }
+        
+    def booking_info(self):
+        return {
+             'id': self.id,
+             'address': self.address,
+             'city': self.city,
+             'state': self.state,
+             'price': self.price,
+             'userId': self.userId,
+             'image': self.image,
+             'review_id':[reviews.id for reviews in self.reviews],
         }

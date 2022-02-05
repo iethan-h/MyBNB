@@ -24,29 +24,29 @@ const LocationCard = ({location}) => {
     
     return (
         <>
-            <div className='one_location'>
-            {/* <img className="one_location_img" src={locations?.Images[0].url} alt={locations?.address}></img> */}
-                    <NavLink to={`/locations/${location?.id}`} className="one_location_li">More info</NavLink>
-                    <div className="locationImage">
-                        <img className="locationImg" src={location?.image} alt=""/>
-                    </div>
-                    <div className="locationAddress">
-                        <p className="one_location_li">{location?.address}</p>
-                    </div>
-                    <div className="locationCity">
-                        <p className="one_location_li">{location?.city}</p>
-                    </div>
-                    <div className="locationState">
-                        <p className="one_location_li">{location?.state}</p>
-                    </div>
-                    <div className="locationCountry">
-                        <p className="one_location_li">{location?.country}</p>
-                    </div>
-            
-                {location?.userId === userId ?
-                <p className="ownerNotif" style={{color: "red",display: "flex", justifyContent: "center"}}> Your location</p> :
-                null}
-            </div>
+            <NavLink to={`/locations/${location?.id}`} className="one_location_li">
+                <div className='one_location' >
+                        <div className="locationImage">
+                            <img className="locationImg" src={location?.image} alt=""/>
+                        </div>
+                        <div className="locationAddress">
+                            <p className="one_location_li">{location?.address}</p>
+                        </div>
+                        <div className="locationCity">
+                            <p className="one_location_li">{location?.city}</p>
+                        </div>
+                        <div className="locationState">
+                            <p className="one_location_li">{location?.state}</p>
+                        </div>
+                        <div className="locationCountry">
+                            <p className="one_location_li">{location?.country}</p>
+                        </div>
+                
+                    {location?.userId === userId ?
+                    <p className="ownerNotif" style={{color: "red",display: "flex", justifyContent: "center"}}> Your location</p> :
+                    null}
+                </div>
+            </NavLink>
         </>
     )
 }
