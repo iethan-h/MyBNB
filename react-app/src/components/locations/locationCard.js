@@ -11,16 +11,14 @@ import './index.css'
 
 
 const LocationCard = ({location}) => {
-    const { locationId } = useParams();
+    // const { locationId } = useParams();
     const history = useHistory();
     const dispatch = useDispatch();
     const userId = useSelector((state) => state.session?.user?.id)
 
-    useEffect((id) => {
-        dispatch(AllLocations(locationId))
-    }, [dispatch, locationId])
-
-
+    useEffect(() => {
+        dispatch(AllLocations())
+    }, [dispatch])
     
     return (
         <>
@@ -46,6 +44,7 @@ const LocationCard = ({location}) => {
                     <p className="ownerNotif" style={{color: "red",display: "flex", justifyContent: "center"}}> Your location</p> :
                     null}
                 </div>
+                
             </NavLink>
         </>
     )

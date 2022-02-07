@@ -2,38 +2,49 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router'
 import {NavLink} from 'react-router-dom'
 import { useEffect, useState } from 'react';
+import BookingCard from './bookingsCard'
+
 
 const BookingsContainer = ({bookings,user}) =>{
-    // const [upComing, setUpcoming] = useState([])
-    // const [oldBooking, setOldBooking] = useState([])
-    // useEffect(() => {
-    // let pastBookings = [];
-    // let upComingBookings = [];
-    // let today = new Date()
-    // for(let booking of bookings){
-    //     let date = new Date(booking.date.slice(5,16))
-    //     if(date < today){
-    //         pastBookings.push(booking)
-    //     }else{
-    //         upComingBookings.push(booking)
-    //     }
-    //    }
-    //    upComingBookings.sort(function(a,b) {
-    //     return new Date(a.date) - new Date(b.date)
-    //   })
-    //   pastBookings.sort(function(a,b) {
-    //     return new Date(a.date) - new Date(b.date)
-    //   })
-    //   setOldBooking(pastBookings)
-    //   setUpcoming(upComingBookings)
-    // },[bookings])
+    const [showPast, setShowPast] = useState(false);
+    const [upComing, setUpcoming] = useState([])
+    const [oldBooking, setOldBooking] = useState([])
+    useEffect(()=>{
+        let pastBookings = [];
+        let upComingBookings = [];
+        let today = new Date()
+        console.log('bookings',bookings)
+        for (let theBooking of bookings){
+            let date = new Date(theBooking.start.slice(5,16))
+         if(date < today){
+             pastBookings.push(theBooking)
+         }else{
+             upComingBookings.push(theBooking)
+         }
+        }
+        upComingBookings.sort(function(a,b){
+            return new Date(a.date) - new Date(b.date)
+        })
+        pastBookings.sort(function(a,b){
+            return new Date(b.date) - new Date(a.date)
+        })
+        setOldBooking(pastBookings)
+        setUpcoming(upComingBookings)
+    },[bookings])
    return(
     <>
-    <div>
-        {bookings?.userId === user?.id &&(
-            <p>test</p>
-        )}
-    </div>
+        {/* check if the user has a booking or not */}
+        {bookings.length === 0 ?(
+            <p className="centered"> Looks like you have no upcoming bookings</p>
+        ):<>
+        <div>
+            <h1 className="centered">Here are your bookings</h1>
+            {bookings.map(booking=>
+            <BookingCard booking={booking} user={user}/>)}
+        </div>
+        
+        </>
+        }
     </>
     )
 }

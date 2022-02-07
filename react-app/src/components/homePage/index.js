@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import LogoutButton from '../auth/LogoutButton'
 import NewHostForm from '../newHost/newHostForm'
 import { Modal } from '../../context/Modal';
@@ -14,7 +14,7 @@ const Home = () =>{
     const [showModal, setShowModal] = useState(false);
     const userId = useSelector((state) => state.session?.user?.id)
     // const userId=useSelector((state)=>state?.session?.user?.id)
-    
+
     return(
         <> 
         <div className='logged_in_nav'>

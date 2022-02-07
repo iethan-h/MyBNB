@@ -6,13 +6,13 @@ from app.forms.update_booking import UpdateBooking
 
 booking_routes = Blueprint('bookings',__name__)
 
-#GET ALL BOOKINGS FOR A LOCATION
-@booking_routes.route('/location/<int:locationId>')
-def location_bookings(location_id):
-    bookings = Booking.query.filter(Bookings.locationId == location_id).all()
-    results = [booking.to_dict() for booking in bookings]
-    return {'bookings':results}
+
     
+#GET ALL BOOKINGS IN DATABASE
+@booking_routes.route('', methods=['GET'])
+def databaseBookings():
+    bookings = Booking.query.all()
+    return {booking.id:booking.to_dict() for booking in bookings}
     
 #GET ALL BOOKINGS FOR A USER
 @booking_routes.route('/user/<int:userId>')
@@ -21,9 +21,8 @@ def user_bookings(userId):
     bookings = Booking.query.filter(Booking.userId == userId).all()
     results = [booking.booking_info() for booking in bookings]
     return {'bookings':results}
-    
-    
-  #CREATE A NEW BOOKING  
+
+#CREATE A NEW BOOKING  
 @booking_routes.route('',methods=['POST'])
 @login_required
 def new_booking():
@@ -59,62 +58,7 @@ def update_booking(booking_id):
 # @login_required
 def delete_booking(booking_id):
     booking = Booking.query.filter(Booking.id == booking_id).first()
-    if booking:
-        db.session.delete(booking)
-        db.session.commit()
-        return "Booking deleted"
+    db.session.delete(booking)
+    db.session.commit()
+    return booking.to_dict()
         
-
-# @booking_routes.route("")
-# @login_required
-# def all_bookings():
-#     return {booking.id: booking.to_dict() for booking in Booking.query.filter.all()} 
-
-# @booking_routes.route('',methods=['POST'])
-# @login_required
-# def new_booking():
-#     form = NewBooking()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         booking = Booking(**request.json)
-#         db.session.add(booking)
-#         db.session.commit()
-#         return booking.to_dict()
-#     else:
-#         return form.errors
-
-# #GET ALL BOOKINGS
-# @booking_routes.route('', methods=['GET'])
-# def bookings():
-#     form = BookingForm()
-#     bookings = Booking.query.all()
-#     return{booking.id: booking.to_dict() for booking in bookings}
-
-# #GET ALL BOOKINGS FOR A USER
-# @booking_routes.route('/<int:id>')
-# def booking(id):
-#     booking = Booking.query.get(id)
-#     return booking.to_dict()    
-
-# #DELETE A BOOKING
-# @booking_routes.route('/<int:id>', methods=['DELETE'])
-# def delete_booking(id):
-#     booking = Booking.query.get(id)
-#     db.session.delete(booking)
-#     db.session.commit()
-#     return booking.to_dict()
-    
-# #UPDATE THE DATE OF A BOOKING
-# @booking_routes.route('<int:id>', methods=['PUT'])
-# def update_booking(bookingId):
-#     form = UpdatedBooking()
-#     form['csrf_token'].data = request.cookies['csrf_token']
-#     if form.validate_on_submit():
-#         data =  form.data
-#         booking = Booking.query.filter(Booking.id == bookingId).first()
-#         booking.startDate = data['start_date']
-#         db.session.commit()
-#         return booking.to_dict()
-#     else:
-#         return form.errors
-    

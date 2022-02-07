@@ -2,6 +2,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import './splash.css'
 import ReactTypingEffect from 'react-typing-effect';
+import { useEffect } from 'react';
 
 const Splash = () => {
     return(
