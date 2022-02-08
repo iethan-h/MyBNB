@@ -4,5 +4,5 @@ from wtforms.validators import DataRequired
 
 
 class UpdateBooking(FlaskForm):
-    start_date = StringField('start_date', validators=[DataRequired()])
-    end_date = StringField('end_date', validators=[DataRequired()])
+    startDate = StringField('start_date', validators=[DataRequired()])
+    endDate = StringField('end_date', validators=[DataRequired()])

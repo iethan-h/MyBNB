@@ -32,7 +32,7 @@ const EditLocation = ({locationId, locationInfo}) => {
          dispatch(
             editOneLocation(payload,locationId)
         )
-        // window.location.reload(true);
+        window.location.reload(true);
     }
     return (
         <div className="formDiv">

@@ -30,11 +30,12 @@ const EditBooking = ({booking}) =>{
             endDate:endDate.toDateString(),
         }
         dispatch(editBooking(payload,bookingId))
-        // window.location.reload(true);
+        window.location.reload(true);
     }
     
     return(
         <>
+        
         <div>
             <p>Book this location</p>
         </div>

@@ -19,11 +19,6 @@ const BookingPage = () =>{
     
     return(
         <>
-        <div className='logged_in_nav'>
-            <NavLink className='loggedInNav' to='/home'>Home</NavLink>
-            <NavLink className='loggedInNav' to='/locations'>Browse</NavLink>
-            <LogoutButton/>
-        </div>
         <div className = "bookings_body">
             <BookingsContainer bookings={bookings} user={user}/>
         </div>

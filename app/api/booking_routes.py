@@ -43,8 +43,8 @@ def update_booking(bookingId):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         booking_edit = Booking.query.get(bookingId)
-        booking_edit.startDate = form.data["start"]
-        booking_edit.endDate = form.data["end"]
+        booking_edit.startDate = form.data["startDate"]
+        booking_edit.endDate = form.data["endDate"]
         db.session.commit()
         return booking_edit.to_dict()
     else:
