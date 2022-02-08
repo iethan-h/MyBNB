@@ -70,10 +70,6 @@ function LoadLocation()  {
 
     return(
         <div>
-            <div>
-                <NavLink className='loggedInNav' to='/home'>Home</NavLink>
-                <NavLink className='loggedInNav' to='/locations'>Back to browse</NavLink>
-            </div>
                 <div className="locationInfo">
                 <div className="locationImage">
                         <img className="locationImg" src={location?.image} alt=""/>

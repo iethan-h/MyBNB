@@ -1,27 +1,29 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import LogoutButton from '../auth/LogoutButton'
 import NewHostForm from '../newHost/newHostForm'
 import { Modal } from '../../context/Modal';
 import {NavLink} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import './homepage.css'
-
+import { useSearch } from '../../context/searchContext';
 
 
 const Home = () =>{
     const [showModal, setShowModal] = useState(false);
     const userId = useSelector((state) => state.session?.user?.id)
     // const userId=useSelector((state)=>state?.session?.user?.id)
+    const {setShowSearch, setSearchCity, setSearchState} = useSearch();
     
+    useEffect(() => {
+        setShowSearch(false)
+        setSearchCity('')
+        setSearchState('')
+    }, [setShowSearch, setSearchCity, setSearchState])
+
     return(
         <> 
-        <div className='logged_in_nav'>
-            <div>
-                <NavLink className='browse' to='/locations'>Browse</NavLink>
-            </div>
-            
             <div>
             <button onClick={() => setShowModal(true)}>Be a host</button>
             {showModal && (
@@ -30,12 +32,6 @@ const Home = () =>{
                 </Modal>
             )}
             </div>
-            
-            <div> 
-                <LogoutButton />
-            </div>
-            
-        </div>
         <div className='homeBody'>
             <h1 className='greeter'>Find your next adventure with Mybnb!</h1>
         </div>

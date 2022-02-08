@@ -66,15 +66,13 @@ export const getBooking = (bookingId) => async (dispatch) => {
 }
 
 //GET ALL BOOKINGS FOR A SINGLE USER
-export const userWalks = (userId) => async (dispatch) => {
+export const userBookings = (userId) => async (dispatch) => {
     const res =  await fetch(`/api/bookings/user/${userId}`)
-    if(res.ok){
-        const bookings = await res.json()
-        dispatch(getAllBookings(bookings))
-    }
+    const data = await res.json();
+    dispatch(getAllBookings(data))
 }
 
-//UPDATE A WALK
+//UPDATE A BOOKING
 export const editBooking = (booking,bookingId) => async (dispatch) => {
     const response = await fetch(`/api/bookings/${bookingId}`, {
         method: 'PUT',
@@ -91,7 +89,7 @@ export const editBooking = (booking,bookingId) => async (dispatch) => {
 }
 
 export const deleteBooking = (bookingId) => async (dispatch) =>{
-    const response = await fetch(`/api/rbookings/${bookingId}`, {
+    const response = await fetch(`/api/bookings/${bookingId}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json',}
     })
@@ -105,8 +103,14 @@ const BookingsReducer = (state = {}, action) =>{
     switch(action.type) {
         
         case GET_ALL_BOOKINGS:
-            return {...state,
-            ...action.booking};
+            const allBookings = {};
+            
+            for(let myBookings of action.booking.bookings){
+                allBookings[myBookings.id] = myBookings
+            }
+            return{...allBookings}
+            // return {...state,
+            // ...action.booking};
             
             
         case ADD_BOOKING:

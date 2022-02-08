@@ -13,6 +13,10 @@ import LoadLocation from './components/locationPage'
 import UpdateLocation from './components/editLocation'
 import Footer from './components/footer'
 import BookingPage from './components/userBookings/userBookings'
+import SearchProvider from './context/searchContext'; 
+import SearchBar from './components/header/searchBar'
+import SearchDisplay from './components/searchResults/searchResults';
+import Header from './components/header/header'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -30,49 +34,58 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-    <div>
-      <Switch>
-        
-          <Route path='/' exact={true}>
-            <NavBar />
-            <Splash />          
-          </Route>
-          
-          <Route path='/login' exact={true}>
-            <LoginForm />
-          </Route>
-          
-          <Route path='/sign-up' exact={true}>
-            <SignUpForm />
-          </Route>
-          
-          <ProtectedRoute path='/home' exact={true} >
-            <Home />
-          </ProtectedRoute>
-          
-          <Route path='/locations' exact={true}>
-            <LocationFeed />
-          </Route>
-          
-          <Route path='/locations/:locationId' exact={true}>
-            <LoadLocation />
-          </Route>
-          
-          <Route path='/locations/:locationId' exact={true}>
-            <UpdateLocation />
-          </Route>
-          
-          <Route path = '/bookings/:userId' exact={true}>
-            <BookingPage/>
-          </Route>  
-        
-        </Switch>
-      </div>
-       <Footer/>
-       
-    </BrowserRouter>
-   
+    <SearchProvider>
+      <BrowserRouter>
+        <div>
+          <Switch>
+              <Route path='/' exact={true}>
+                <NavBar />
+                <Splash />          
+              </Route>
+              
+              <Route path='/login' exact={true}>
+                <LoginForm />
+              </Route>
+              
+              <Route path='/sign-up' exact={true}>
+                <SignUpForm />
+              </Route>
+              
+              <ProtectedRoute path='/home' exact={true} >
+              <Header />
+                <Home />
+              </ProtectedRoute>
+              
+              <Route path='/locations' exact={true}>
+              <Header />
+                <LocationFeed />
+              </Route>
+              
+              <Route path='/locations/:locationId' exact={true}>
+              <Header />
+                <LoadLocation />
+              </Route>
+              
+              <Route path='/locations/:locationId' exact={true}>
+              <Header />
+                <UpdateLocation />
+              </Route>
+              
+              <Route path = '/bookings/:userId' exact={true}>
+              <Header />
+                <BookingPage/>
+              </Route>  
+              
+              <Route exact path='/search' >
+              <Header />
+                    <SearchDisplay />
+                  </Route>
+            
+            </Switch>
+          </div>
+        <Footer/>
+      </BrowserRouter>
+    </SearchProvider>
   );
 }
 

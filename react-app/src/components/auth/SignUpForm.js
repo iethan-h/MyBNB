@@ -56,7 +56,7 @@ const SignUpForm = () => {
       <a className='home-link' href='/'>Home</a>
       <img className='cabin' src='https://wallpaperaccess.com/full/2694375.jpg' alt=''/>
       <div className='center'>
-        <h1>Sign up</h1>
+        <h1 style={{color:'white'}}>Sign up</h1>
         <form onSubmit={onSignUp}>   
           <div>
             {errors.map((error, ind) => (
