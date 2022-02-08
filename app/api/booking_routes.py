@@ -36,28 +36,26 @@ def new_booking():
     else:
         return form.errors
         
-#UPDATE A BOOKING
 @booking_routes.route('/<int:bookingId>',methods=['PUT'])
 # @login_required
-def update_booking(booking_id):
+def update_booking(bookingId):
     form = UpdateBooking()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        data = form.data
-
-        booking = Booking.query.filter(Booking.id == booking_id).first()
-        booking.startDate = data['startDate']
-        booking.endDate = data['endDate']
+        booking_edit = Booking.query.get(bookingId)
+        booking_edit.startDate = form.data["start"]
+        booking_edit.endDate = form.data["end"]
         db.session.commit()
-        return booking.booking_info()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+        return booking_edit.to_dict()
+    else:
+        return form.errors
     
     
 #DELETE A BOOKING
 @booking_routes.route('/<int:bookingId>',methods=['DELETE'])
 # @login_required
-def delete_booking(booking_id):
-    booking = Booking.query.filter(Booking.id == booking_id).first()
+def delete_booking(id):
+    booking = Booking.query.get(id)
     db.session.delete(booking)
     db.session.commit()
     return booking.to_dict()

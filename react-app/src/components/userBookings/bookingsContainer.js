@@ -6,31 +6,31 @@ import BookingCard from './bookingsCard'
 
 
 const BookingsContainer = ({bookings,user}) =>{
-    const [showPast, setShowPast] = useState(false);
-    const [upComing, setUpcoming] = useState([])
-    const [oldBooking, setOldBooking] = useState([])
-    useEffect(()=>{
-        let pastBookings = [];
-        let upComingBookings = [];
-        let today = new Date()
-        console.log('bookings',bookings)
-        for (let theBooking of bookings){
-            let date = new Date(theBooking.start.slice(5,16))
-         if(date < today){
-             pastBookings.push(theBooking)
-         }else{
-             upComingBookings.push(theBooking)
-         }
-        }
-        upComingBookings.sort(function(a,b){
-            return new Date(a.date) - new Date(b.date)
-        })
-        pastBookings.sort(function(a,b){
-            return new Date(b.date) - new Date(a.date)
-        })
-        setOldBooking(pastBookings)
-        setUpcoming(upComingBookings)
-    },[bookings])
+    // const [showPast, setShowPast] = useState(false);
+    // const [upComing, setUpcoming] = useState([])
+    // const [oldBooking, setOldBooking] = useState([])
+    // useEffect(()=>{
+    //     let pastBookings = [];
+    //     let upComingBookings = [];
+    //     let today = new Date()
+    //     console.log('bookings',bookings)
+    //     for (let theBooking of bookings){
+    //         let date = new Date(theBooking.start.slice(5,16))
+    //      if(date < today){
+    //          pastBookings.push(theBooking)
+    //      }else{
+    //          upComingBookings.push(theBooking)
+    //      }
+    //     }
+    //     upComingBookings.sort(function(a,b){
+    //         return new Date(a.date) - new Date(b.date)
+    //     })
+    //     pastBookings.sort(function(a,b){
+    //         return new Date(b.date) - new Date(a.date)
+    //     })
+    //     setOldBooking(pastBookings)
+    //     setUpcoming(upComingBookings)
+    // },[bookings])
    return(
     <>
         {/* check if the user has a booking or not */}
