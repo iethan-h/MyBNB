@@ -43,3 +43,9 @@ margin: center;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.hostBtn{
+    display:flex;
+    justify-content:center;
+    margin:center;
+    padding:25px;
+}

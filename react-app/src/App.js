@@ -36,7 +36,8 @@ function App() {
   return (
     <SearchProvider>
       <BrowserRouter>
-        <div>
+      <div>
+        <div className="mainContent">
           <Switch>
               <Route path='/' exact={true}>
                 <NavBar />
@@ -84,6 +85,7 @@ function App() {
             </Switch>
           </div>
         <Footer/>
+        </div>
       </BrowserRouter>
     </SearchProvider>
   );

@@ -3,9 +3,9 @@ import "./footer.css";
 
 function Footer (){
   return (
-    <footer className="footerDiv">
+    <footer className="footerDiv" id="footer">
       <div className="socialMedia">
-        <p className="social">Created by: Ethan Harwell</p>
+        <p className="social">Created by Ethan Harwell</p>
         <a className="icons" target="_blank" href="https://github.com/iethan-h">
           <img
             src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
