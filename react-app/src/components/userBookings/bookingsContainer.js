@@ -1,8 +1,9 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router'
-import {NavLink} from 'react-router-dom'
-import { useEffect, useState } from 'react';
+// import { useSelector, useDispatch } from 'react-redux'
+// import { useParams } from 'react-router'
+// import {NavLink} from 'react-router-dom'
+// import { useEffect, useState } from 'react';
 import BookingCard from './bookingsCard'
+import './bookings.css'
 
 
 const BookingsContainer = ({bookings,user}) =>{
@@ -35,10 +36,14 @@ const BookingsContainer = ({bookings,user}) =>{
     <>
         {/* check if the user has a booking or not */}
         {bookings.length === 0 ?(
-            <p className="centered"> Looks like you have no upcoming bookings</p>
+            <p className="userBookingConfirm"> Looks like you have no upcoming bookings</p>
         ):<>
-        <div>
-            <h1 className="centered">Here are your bookings</h1>
+        <div className="userBookingConfirm">
+            <h1>Here are your bookings</h1>
+           
+        </div> 
+        <hr/>
+        <div className="allUserBookings">
             {bookings.map(booking=>
             <BookingCard booking={booking} user={user}/>)}
         </div>

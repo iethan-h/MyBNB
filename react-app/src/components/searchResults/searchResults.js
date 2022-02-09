@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import './searchResults'
 
 function SearchDisplay() {
 
@@ -27,7 +27,7 @@ function SearchDisplay() {
                                 {locations?.map(location =>
                                     <>
                                     
-                                        <div className='one_location' >
+                                        <div className='one_location' style={{display:"flex"},{justifyContent:"center"},{margin:"center"}}>
                                             <NavLink to={`/locations/${location?.id}`} className="one_location_li">
                                                 <div className="locationImage">
                                                     <img className="locationImg" src={location?.image} alt=""/>

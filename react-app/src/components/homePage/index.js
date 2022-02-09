@@ -24,8 +24,8 @@ const Home = () =>{
 
     return(
         <> 
-            <div>
-            <button onClick={() => setShowModal(true)}>Be a host</button>
+            <div className="hostBtn">
+            <button onClick={() => setShowModal(true)} style={{fontSize:"25px"}}>Be a host</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <NewHostForm  setShowModal={setShowModal}/>
@@ -39,11 +39,11 @@ const Home = () =>{
         <div className="homeImage">
             <div className="home_img_1">
                 <img className='home_img1' src="https://www.lonestartravelguide.com/wp-content/uploads/2020/09/shutterstock_786767038-1024x681.jpg" alt=""/> 
-                <NavLink className='bookingsView' to={`/bookings/${userId}`}>See your bookings</NavLink>
+                <NavLink className='centered' style={{color:"white",fontSize:"30px",paddingTop:"10%"}} to={`/bookings/${userId}`}>See your bookings</NavLink>
             </div>
-            <div className="home_img_2">
+            {/* <div className="home_img_2">
                 <img className='home_img2' src='https://i.guim.co.uk/img/media/e257becfec477105123f06f96db4529966b4035c/0_391_6048_3628/master/6048.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=6a3a587e64662d409ef25b3215fb5ac0' alt=""/>
-            </div>
+            </div> */}
         </div>
         </>
     )
