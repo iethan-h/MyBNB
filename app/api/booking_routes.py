@@ -54,8 +54,8 @@ def update_booking(bookingId):
 #DELETE A BOOKING
 @booking_routes.route('/<int:bookingId>',methods=['DELETE'])
 # @login_required
-def delete_booking(id):
-    booking = Booking.query.get(id)
+def delete_booking(bookingId):
+    booking = Booking.query.get(bookingId)
     db.session.delete(booking)
     db.session.commit()
     return booking.to_dict()
