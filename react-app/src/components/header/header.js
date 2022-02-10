@@ -2,9 +2,12 @@ import React from 'react';
 import {  NavLink } from 'react-router-dom';
 import SearchBar from './searchBar';
 import LogoutButton from '../auth/LogoutButton'
+import ProfileButton from './profileButton';
+import { useSelector } from 'react-redux';
 import './searchBar.css'
 
 const Header = () => {
+  const user = useSelector(state => state.session.user);
 
   return (
     <>
@@ -18,6 +21,9 @@ const Header = () => {
             <SearchBar />
             <div> 
                 <LogoutButton />
+            </div>
+            <div>
+            <ProfileButton user={user}/>
             </div>
         
         </div>
