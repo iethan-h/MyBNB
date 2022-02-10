@@ -43,25 +43,18 @@ const SearchBar = () => {
             )}
             {showSearch && (
                 <div className="realSearchBar">
-                    {/* <div className="searchDogsHeader">Search Dogs</div> */}
                     <form className="realSearchFormContainer" onSubmit={handleSearch}>
                         <div className="searchFormField">
                             <label>City</label>
                             <input
                                 type="text"
                                 autoComplete="off"
-                                placeholder="What city?"
+                                placeholder="City"
                                 maxLength="50"
                                 value={searchCity}
                                 onChange={(e) => setSearchCity(e.target.value)}
                             />
                         </div>
-                        {/* <div className="searchFormField">
-                            <label>State</label>
-                            <input placeholder="enter state initials"
-                            onChange={(e) => setSearchState(e.target.value)}
-                            />
-                        </div> */}
                          <div className="searchFormField">
                             <label>State</label>
                             <select value={searchState} onChange={(e) => setSearchState(e.target.value)}>

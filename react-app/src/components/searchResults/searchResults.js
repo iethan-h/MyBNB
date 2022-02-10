@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import './searchResults'
 import LocationCard from '../locations/locationCard'
 
