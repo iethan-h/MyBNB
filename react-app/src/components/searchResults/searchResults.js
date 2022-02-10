@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import './searchResults'
+import LocationCard from '../locations/locationCard'
 
 function SearchDisplay() {
 
@@ -23,31 +24,11 @@ function SearchDisplay() {
                                         <h1>{`Search Results - ${locations?.length} locations`}</h1>
                                     )}
                                 </div>
-                                
-                                {locations?.map(location =>
-                                    <>
-                                    
-                                        <div className='one_location' style={{display:"flex"},{justifyContent:"center"},{margin:"center"}}>
-                                            <NavLink to={`/locations/${location?.id}`} className="one_location_li">
-                                                <div className="locationImage">
-                                                    <img className="locationImg" src={location?.image} alt=""/>
-                                                </div>
-                                                <div className="locationAddress">
-                                                    <p className="one_location_li">{location?.address}</p>
-                                                </div>
-                                                <div className="locationCity">
-                                                    <p className="one_location_li">{location?.city}</p>
-                                                </div>
-                                                <div className="locationState">
-                                                    <p className="one_location_li">{location?.state}</p>
-                                                </div>
-                                                <div className="locationCountry">
-                                                    <p className="one_location_li">{location?.country}</p>
-                                                </div>
-                                            </NavLink>
-                                        </div>
-                                </>
-                                )}
+                                <div className="feedWrapper">
+                                    {locations?.map(location =>
+                                        <LocationCard key={location?.id} location={location}/> 
+                                    )}
+                                </div>
                             </div>
                         </div>
                     )}
