@@ -12,6 +12,7 @@ margin: center;
     display:flex;
     justify-content: space-between;
     align-items:center;
+    margin:center;
     padding: 10px;
 }
 
@@ -47,5 +48,4 @@ margin: center;
     display:flex;
     justify-content:center;
     margin:center;
-    padding:25px;
 }
