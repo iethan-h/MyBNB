@@ -19,9 +19,7 @@ const Header = () => {
                 </NavLink>
             </div>
             <SearchBar />
-            <div> 
-                <LogoutButton />
-            </div>
+
             <div>
             <ProfileButton user={user}/>
             </div>
