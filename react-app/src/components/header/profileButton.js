@@ -55,9 +55,9 @@ const ProfileButton = ({user}) => {
                                 <Link to={`/bookings/${user?.id}`}>
                                     <div className="profileDropDownLinks">Your bookings</div>
                                 </Link>
-                                <Link to="/">
+                                {/* <Link to="/">
                                     <div className="profileDropDownLinks">Be a host</div>
-                                </Link>
+                                </Link> */}
                                 <div className="dropDownLine"></div>
                                 <div className="logOutButton" onClick={onLogout}>Log out</div>
                             </div>
