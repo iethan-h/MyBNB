@@ -87,3 +87,6 @@ textarea{
     flex: 1;
     font-family: Arial, Helvetica, sans-serif;
 }
+.pageContainer {
+    min-height: 100vh;
+}

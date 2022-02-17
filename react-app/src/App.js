@@ -14,7 +14,6 @@ import UpdateLocation from './components/editLocation'
 import Footer from './components/footer'
 import BookingPage from './components/userBookings/userBookings'
 import SearchProvider from './context/searchContext'; 
-import SearchBar from './components/header/searchBar'
 import SearchDisplay from './components/searchResults/searchResults';
 import Header from './components/header/header'
 
@@ -37,7 +36,7 @@ function App() {
     <SearchProvider>
       <BrowserRouter>
       <div>
-        <div className="mainContent">
+        <div className="pageContainer">
           <Switch>
               <Route path='/' exact={true}>
                 <NavBar />
