@@ -3,23 +3,21 @@ import "./footer.css";
 
 function Footer (){
   return (
-    <footer className="footerDiv" id="footer">
-      <div className="socialMedia">
-        <p className="social">Created by Ethan Harwell</p>
-        <a className="icons" target="_blank" href="https://github.com/iethan-h">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
-            alt="githubLogo"
-          />
+    <footer >
+    <p>Made by Ethan Harwell</p>
+    <div id="devLinks">
+        <a href="https://www.linkedin.com/in/jackpercival7/" target="_blank" rel="noreferrer">
+            <div className="footer-icon">
+                <i className="fab fa-linkedin"></i>
+            </div>
         </a>
-        <a className="icons" target="_blank" href="https://www.linkedin.com/in/ethan-harwell-895587193/">
-          <img
-            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg"
-            alt="linkedInLogo"
-          />
+        <a href="https://github.com/iethan-h" target="_blank" rel="noreferrer">
+            <div className="footer-icon">
+                <i className="fab fa-github"></i>
+            </div>
         </a>
-      </div>
-    </footer>
+    </div>
+</footer>
   );
 };
 

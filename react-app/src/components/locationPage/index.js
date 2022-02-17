@@ -44,7 +44,17 @@ function LoadLocation()  {
     }
     
 
-    
+    // const tileDisabled = ({ date, view }) => {
+    //     let walkDates = [];
+    //     for (let walk of walks) {
+    //         let date1 = new Date(walk?.date.slice(5,16))
+    //         walkDates.push(date1)
+    //     }
+
+    //     if (view === 'month') {
+    //         return walkDates.find(theDate => equalDates(theDate, date))
+    //     }
+    // }
 
     // let alreadyReviewed = false;
     let reviewCards;
