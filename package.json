@@ -5,6 +5,7 @@
     "moment": "^2.29.1",
     "react": "^16.14.0",
     "react-calendar": "^3.6.0",
+    "react-date-range": "^1.4.0",
     "react-dom": "^16.14.0",
     "react-with-direction": "^1.4.0",
     "rsuite": "^5.5.2"

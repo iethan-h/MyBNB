@@ -17,9 +17,6 @@ function LocationFeed()  {
     
     return(
         <>
-            <div>
-                <NavLink className="loggedInNav" to='/home'>Home</NavLink>
-            </div>
             <div className="locWelcome">
                 <h1>Browse ALL of our locations</h1>
             </div>

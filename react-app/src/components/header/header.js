@@ -18,6 +18,9 @@ const Header = () => {
                   <div className="logo">Mybnb</div>
                 </NavLink>
             </div>
+            <div>
+              <NavLink className='browse' to='/locations'>Browse</NavLink>
+            </div>
             <SearchBar />
 
             <div>

@@ -5,7 +5,8 @@ import { useParams } from 'react-router'
 import {newBooking} from '../../store/booking'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-
+import { differenceInCalendarDays } from 'date-fns';
+import "./calendar.css"
 
 function BookingForm({locationInfo}){
     const dispatch = useDispatch();
@@ -14,6 +15,16 @@ function BookingForm({locationInfo}){
     const [startDate,setStartDate] = useState(new Date())
     const [endDate,setEndDate] = useState(startDate)
     const userId = useSelector((state) => state.session?.user?.id);
+    const bookings = useSelector(state => Object.values(state.booking))
+    const [tomorrow, setTomorrow] = useState(null)
+
+    
+    useEffect(() => {
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        setTomorrow(tomorrow)
+    }, [])
     
     useEffect(()=>{
         console.log(startDate, endDate)
@@ -30,6 +41,20 @@ function BookingForm({locationInfo}){
         dispatch(newBooking(payload))
         window.location.reload(true);
     }
+    const equalDates = (date1, date2) => {
+        return differenceInCalendarDays(date1, date2) === 0;
+    }
+    const tileDisabled = ({ date, view }) => {
+        let bookingDates = [];
+        for (let booking of bookings) {
+            let date1 = new Date(booking?.date.slice(5,16))
+            bookingDates.push(date1)
+        }
+
+        if (view === 'month') {
+            return bookingDates.find(theDate => equalDates(theDate, date))
+        }
+    }
     
     return(
         <>
@@ -39,10 +64,11 @@ function BookingForm({locationInfo}){
         <div>
             <form>
                 <div>
-                <Calendar selectRange={true} onChange={([startDate, endDate]) => {            
+                <Calendar selectRange={true} tileDisabled={tileDisabled} minDate={tomorrow} onChange={([startDate, endDate]) => {            
                 setStartDate(startDate)
                 setEndDate(endDate)
-                }
+                }   
+                
             }
                 />
                 </div>
