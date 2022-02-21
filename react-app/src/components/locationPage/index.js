@@ -80,24 +80,21 @@ function LoadLocation()  {
 
     return(
         <div>
-                <div className="locationInfo">
-                <div className="locationImage">
-                        <img className="locationImg" src={location?.image} alt=""/>
-                    </div>
-                    <div className="locationAddress">
-                        <p className="one_location_li">{location?.address}</p>
-                    </div>
-                    <div className="locationCity">
-                        <p className="one_location_li">{location?.city}</p>
-                    </div>
-                    <div className="locationState">
-                        <p className="one_location_li">{location?.state}</p>
-                    </div>
-                    <div className="locationCountry">
-                        <p className="one_location_li">{location?.country}</p>
-                    </div>
-                    <div className="locationPrice">
-                        <p className="one_location_li">${location?.price} per night</p>
+                <div className="locationArea">
+                    <div className="locationInfo">
+                        <img className="locationimg" src={location?.image} alt=""/>
+                        <div className="info">
+                            <div className="locationDetails">
+                                <p className="one_location_li">{location?.address} {location?.city}, {location?.state}</p>
+                            </div>
+                            <div className="locationDetails">
+                                <p className="one_location_li">{location?.country}</p>
+                            </div>
+                            <div className="locationDetails">
+                                <p className="one_location_li">${location?.price} per night</p>
+                            </div>
+                       </div>
+
                     </div>
                     
                     {location?.userId === user?.id ?
