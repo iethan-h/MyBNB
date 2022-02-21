@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useSearch } from '../../context/searchContext';
-import { login, logout } from '../../store/session';
-import { signUp } from '../../store/session';
+import { logout } from '../../store/session';
+import { useHistory } from "react-router-dom";
 
 const ProfileButton = ({user}) => {
+    const history = useHistory();
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
     const {setShowSearch, setSearchCity, setSearchState} = useSearch();
@@ -14,6 +15,7 @@ const ProfileButton = ({user}) => {
         setShowSearch(false)
         setSearchCity('')
         setSearchState('')
+        history.push('/')
       };
     
     useEffect(() => {

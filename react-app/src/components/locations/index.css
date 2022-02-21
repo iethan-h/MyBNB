@@ -2,13 +2,14 @@
     
     right: 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     padding:5px;
     /* background-color: rgba(0, 0, 0, 0.548); */
     background-repeat: no-repeat;
     background-size: cover;
-    padding:5px;
+    padding-left:25px;
+    padding-right:25px;
  }
  .one_location{
 
@@ -39,6 +40,3 @@
 }
 
 
-.one_location_li{
-    color:black;
-}
