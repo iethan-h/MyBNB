@@ -13,7 +13,7 @@
     justify-content: center;
     padding: 5vh;
     padding-top:20px;
-    padding-left:25vh;
+    padding-left:20vh;
 }
 
 
@@ -43,9 +43,10 @@
     margin:10px;
 }
 .reviews{
-    display:center;
+    display:flex;
     justify-content:center;
 }
+
 .locationInfo{
     display:flex;
     flex-direction: row;
@@ -61,4 +62,7 @@
 .one_location_li{
     color:black;
     font-size:25px;
+}
+.reviewCards{
+    padding-bottom:2vh;
 }
