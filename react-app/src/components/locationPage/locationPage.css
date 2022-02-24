@@ -65,4 +65,8 @@
 }
 .reviewCards{
     padding-bottom:2vh;
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+    margin-top: 50px;
 }
