@@ -13,6 +13,10 @@ import ReviewForm from '../reviews/newReview'
 import './locationPage.css'
 import UpdateLocation from '../editLocation'
 import BookingForm from '../bookings/booking_form'
+import {newBooking} from '../../store/booking'
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
+
 
 
 function LoadLocation()  {
@@ -27,6 +31,36 @@ function LoadLocation()  {
     const [showCalendar, setShowCalendar] = useState(false)
     const reviews = useSelector(state =>Object.values(state.review))
     const { reviewId } = useParams();
+    const [startDate,setStartDate] = useState(new Date())
+    const [endDate,setEndDate] = useState(startDate)
+    const userId = useSelector((state) => state.session?.user?.id);
+    const bookings = useSelector(state => Object.values(state.booking))
+    const [tomorrow, setTomorrow] = useState(null)
+    const [date, setDate] = useState(null)
+    const [formattedDate, setFormattedDate] = useState('')
+
+    
+    
+    
+    useEffect(() => {
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        setTomorrow(tomorrow)
+    }, [])
+
+    const handleBooking = async (e) => {
+        e.preventDefault();
+        const payload = {
+            userId,
+            locationId,
+            startDate: startDate.toDateString(),
+            endDate:endDate.toDateString(),
+        }
+        dispatch(newBooking(payload))
+        window.location.reload(true);
+    }
+    
     
     useEffect(()=>{
         dispatch(AllReviews(reviewId))
@@ -72,12 +106,13 @@ function LoadLocation()  {
         })
         .reverse().slice()
     }
+    useEffect(() => {
+        if (date) {
+            const displayDate = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+            setFormattedDate(displayDate)
+        }
+    }, [date])
     
-    //Disable already booked dates.
-    
-
-
-
     return(
         <div>
                 <div className="locationArea">
@@ -96,15 +131,41 @@ function LoadLocation()  {
                        </div>
 
                     </div>
-                    
+                    <hr className = 'bookingLine'/>
                     {location?.userId === user?.id ?
                         <>
                             <div className="locationOptions">                       
                                     <button className="deleteLocation" type="button"  onClick={handleDelete}>Delete Location</button>
                                     <UpdateLocation locationId={location}/>                              
-                            </div>          
+                            </div> 
+                                     
                         </>:
-                                <BookingForm  locationId={location}/>
+                        <div className="newBooking">
+                        
+                                
+                            
+                            <div className="bookingForm">
+                                <div className="booking2">
+                                    <p className="booking3">Book this location!</p>
+                                </div>
+                            <Calendar selectRange={true} minDate={tomorrow} onChange={([startDate, endDate]) => {            
+                                setStartDate(startDate)
+                                setEndDate(endDate)
+                                }                               
+                            }/>
+                            </div>
+                            <div className="bookingConfirm">
+                                <div className="centerDiv">
+                                    <p>${location?.price} per night</p>
+                                </div>
+                                <div className="leaveReview">
+                                    <p style={{fontSize:"25px"}}>After your stay please feel free to leave a review!</p>
+                                </div>
+                                <div className="centerDiv" style = {{paddingTop:"50px"}}>
+                                    <button type='submit' onClick={handleBooking} style={{fontSize:"25px"}} >Book location</button>
+                                </div>
+                            </div>
+                        </div>
                         }  
                         <hr />
                     </div>

@@ -110,7 +110,7 @@ const NewHostForm = ({setShowModal}) => {
                             <select className="stateSelect" value={state} onChange={(e) => setState(e.target.value)}>
                                 <option value="" disabled defaultValue>What state?</option>
                                 <option value="">-</option>
-                                <option value="Ak">Alabama</option>
+                                <option value="Al">Alabama</option>
                                 <option value="Ak">Alaska</option>
                                 <option value="Az">Arizona</option>
                                 <option value="Ar">Arkansas</option>

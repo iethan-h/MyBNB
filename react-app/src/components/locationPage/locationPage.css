@@ -26,6 +26,8 @@
     height: 50%;
     object-fit: cover;
     object-position: bottom;
+    border-radius: 25px;
+    border-bottom: 1px solid #0000;
 }
 
 .locationImg{
@@ -43,8 +45,10 @@
     margin:10px;
 }
 .reviews{
-    display:flex;
-    justify-content:center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 1000px;
 }
 
 .locationInfo{
@@ -69,4 +73,38 @@
     justify-content:center;
     flex-wrap: wrap;
     margin-top: 50px;
+}
+.newBooking{
+    display: flex;
+    justify-content:space-around;
+    padding: 7px;
+}
+
+.booking2{
+    display: flex;
+    justify-content:center;
+} .booking3{
+    font-size:30px;
+}
+.bookingConfirm{
+    min-width: 367px;
+    width: 367px;
+    height: 290px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 23px;
+    padding-top:45px;
+    top: 130px;
+    z-index: 15;
+    position: sticky;
+}
+
+.centerDiv{
+    display: flex;
+    justify-content:center;
+}
+
+.leaveReview{
+    padding-top:25px;
 }

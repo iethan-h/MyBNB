@@ -39,9 +39,7 @@ function BookingForm({locationInfo}){
     
     return(
         <>
-        <div>
-            <p>Book this location</p>
-        </div>
+
         <div>
             <form>
                 <div>

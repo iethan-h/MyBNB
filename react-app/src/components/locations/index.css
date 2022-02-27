@@ -2,7 +2,7 @@
     
     right: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
     padding:5px;
     /* background-color: rgba(0, 0, 0, 0.548); */
@@ -37,6 +37,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.locationImg{
+    border-radius: 5px;
+    border: 1px solid #000000;
+}
+.locationImage{
+    display: flex;
+    justify-content: center;
 }
 
 
