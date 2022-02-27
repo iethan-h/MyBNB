@@ -57,6 +57,9 @@ const ProfileButton = ({user}) => {
                                 <Link to={`/bookings/${user?.id}`}>
                                     <div className="profileDropDownLinks">Your bookings</div>
                                 </Link>
+                                <Link to={`/new-host`}>
+                                    <div className="profileDropDownLinks">Become a host</div>    
+                                </Link>
                                 {/* <Link to="/">
                                     <div className="profileDropDownLinks">Be a host</div>
                                 </Link> */}
@@ -75,6 +78,7 @@ const ProfileButton = ({user}) => {
                                     Sign Up
                                 </a>
                                 </div>
+
                             </div>
                         )}
                     </div>

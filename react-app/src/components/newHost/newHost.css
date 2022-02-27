@@ -11,3 +11,11 @@
     padding-top:5px;
     padding:10px;
 }
+.newHostContainer{
+    padding-left:50vw;
+    padding-top:10vh;
+}
+
+.hostInput{
+    font-size:5vh;
+}
