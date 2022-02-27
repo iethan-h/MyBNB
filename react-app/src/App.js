@@ -16,6 +16,7 @@ import BookingPage from './components/userBookings/userBookings'
 import SearchProvider from './context/searchContext'; 
 import SearchDisplay from './components/searchResults/searchResults';
 import Header from './components/header/header'
+import NewHostPage from './components/newHost/newHostPage'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -79,7 +80,12 @@ function App() {
               <Route exact path='/search' >
               <Header />
                     <SearchDisplay />
-                  </Route>
+              </Route>
+              
+              <Route exact path='/new-host' >
+              <Header />
+                    <NewHostPage/>
+              </Route>
             
             </Switch>
           </div>
